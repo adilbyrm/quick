@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <base href="/resources/assets/front/" />
+    <base href="{{url('/resources/assets/front')}}/" />
     <title>Reis Elektronik A.Ş</title>
     <!--SEO Meta Tags-->
     <meta name="description" content="Reis Elektronik A.Ş" />
@@ -47,7 +47,7 @@
             <div class="modal-body">
                 <form class="login-form">
                     <div class="form-group group">
-                        <label for="log-email">Email</label>
+                        <label for="log-email">E-posta</label>
                         <input type="email" class="form-control" name="log-email" id="log-email" placeholder="E-posta Adresiniz" required>
                     </div>
                     <div class="form-group group">
@@ -123,7 +123,7 @@
                 <li class="hide-sm"><a href="#">İletişim</a></li>
             </ul>
             <ul class="catalog">
-                <li class="has-submenu"><a href="shop-filters-left-3cols.html">Phones<i class="fa fa-chevron-down"></i></a>
+                <li class="has-submenu"><a href="shop-filters-left-3cols.html">Marka 1<i class="fa fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="#">Nokia</a></li>
                         <li class="has-submenu"><a href="#">iPhone</a><!--Class "has-submenu" for adding carret and dropdown-->
@@ -156,10 +156,10 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="shop-filters-left-3cols.html">Cameras</a></li>
-                <li><a href="shop-filters-left-3cols.html">Personal computers</a></li>
-                <li><a href="shop-filters-left-3cols.html">Gaming consoles</a></li>
-                <li><a href="shop-filters-left-3cols.html">TV sets</a></li>
+                <li><a href="shop-filters-left-3cols.html">Marka 2</a></li>
+                <li><a href="shop-filters-left-3cols.html">Marka 3</a></li>
+                <li><a href="shop-filters-left-3cols.html">Marka 4</a></li>
+                <li><a href="shop-filters-left-3cols.html">Marka 5</a></li>
             </ul>
         </nav>
 
@@ -167,8 +167,8 @@
         <div class="toolbar group">
             <button class="search-btn btn-outlined-invert"><i class="icon-magnifier"></i></button>
             <div class="middle-btns">
-                <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span>Wishlist</span></a>
-                <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span>Login</span></a>
+                <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span>Favoriler</span></a>
+                <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span>Giriş</span></a>
             </div>
             <div class="cart-btn">
                 <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i><span>3</span></a>
@@ -226,24 +226,24 @@
 <!--Sticky Buttons-->
 <div class="sticky-btns">
     <form class="quick-contact ajax-form" method="post" name="quick-contact">
-        <h3>Contact us</h3>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+        <h3>Bize İletin...</h3>
+        <p class="text-muted">Her türlü görüş ve önerilerinizi bize iletebilirsiniz.</p>
         <div class="form-group">
-            <label for="qc-name">Full name</label>
-            <input class="form-control input-sm" type="text" name="name" id="qc-name" placeholder="Enter full name">
+            <label for="qc-name">Adınız Soyadınız</label>
+            <input class="form-control input-sm" type="text" name="name" id="qc-name" placeholder="Adınız Soyadınız" required>
         </div>
         <div class="form-group">
-            <label for="qc-email">Email</label>
-            <input class="form-control input-sm" type="email" name="email" id="qc-email" placeholder="Enter email">
+            <label for="qc-email">E-posta</label>
+            <input class="form-control input-sm" type="email" name="email" id="qc-email" placeholder="Enter email" required>
         </div>
         <div class="form-group">
-            <label for="qc-message">Your message</label>
-            <textarea class="form-control input-sm" name="message" id="qc-message" placeholder="Enter your message"></textarea>
+            <label for="qc-message">Mesajınız</label>
+            <textarea class="form-control input-sm" name="message" id="qc-message" placeholder="İletmek istediğiniz mesajı yazınız" required></textarea>
         </div>
         <!-- Validation Response -->
         <div class="response-holder"></div>
         <!-- Response End -->
-        <input class="btn btn-success btn-sm btn-block" type="submit" value="Send">
+        <input class="btn btn-success btn-sm btn-block" type="submit" value="Gönder">
     </form>
     <span id="qcf-btn"><i class="fa fa-envelope"></i></span>
     <span id="scrollTop-btn"><i class="fa fa-chevron-up"></i></span>
@@ -365,11 +365,13 @@
     var google_remarketing_only = true;
     /* ]]> */
 </script>
+{{-- 
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 </script>
+ --}}
 <noscript>
     <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/966923546/?value=0&amp;guid=ON&amp;script=0"/>
+        {{-- <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/966923546/?value=0&amp;guid=ON&amp;script=0"/> --}}
     </div>
 </noscript>
 
