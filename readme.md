@@ -1,1 +1,1 @@
-quick project
+quick project!
