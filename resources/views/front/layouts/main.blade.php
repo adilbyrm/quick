@@ -46,10 +46,10 @@
                 <h2>Giriş Yap veya <a href="#">Kayıt Ol</a></h2>
             </div>
             <div class="modal-body">
-                <form class="login-form" method="POST" action="{{route('dealer.login.p', 15)}}">
+                <form class="login-form" method="POST" action="{{route('dealer.login.p')}}">
                     <div class="form-group group">
                         <label for="log-email">E-posta</label>
-                        <input type="email" class="form-control" name="log_email" id="log-email" placeholder="E-posta Adresiniz" required>
+                        <input type="" class="form-control" name="log_email" id="log-email" placeholder="E-posta Adresiniz" required>
                     </div>
                     <div class="form-group group">
                         <label for="log-password">Şifre</label>

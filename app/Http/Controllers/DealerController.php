@@ -10,11 +10,14 @@ use Session;
 
 use DB;
 
+use Auth;
+
 class DealerController extends FrontController
 {
 	public function __construct()
 	{
 		$this->middleware('XSSProtection');
+		// $this->middleware('guest');
 	}
 
     public function login()
@@ -24,6 +27,11 @@ class DealerController extends FrontController
 
     public function loginP(Request $request)
     {
-    	dd(DB::table('Accounts')->where('password', '246810')->get());
+    	$user = DB::table('Accounts')->where('username', $request->log_email)->where('password', $request->log_password)->first();
+    	if($user) {
+    		Auth::guard('user')->loginUsingId($user->RowID);
+    		return back();
+    	}
+    	return redirect()->route('dealer.login');
     }
 }

@@ -41,5 +41,5 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', ['as' => 'homepage', 'uses' => 'HomeController@homepage']);
 	Route::get('dealer-login', ['as' => 'dealer.login', 'uses' => 'DealerController@login']);
-	Route::post('dealer-login/{id}', ['as' => 'dealer.login.p', 'uses' => 'DealerController@loginP']);
+	Route::post('dealer-login', ['as' => 'dealer.login.p', 'uses' => 'DealerController@loginP']);
 });
