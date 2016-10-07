@@ -17,7 +17,7 @@ class DealerController extends FrontController
 	public function __construct()
 	{
 		$this->middleware('XSSProtection');
-		// $this->middleware('guest');
+		$this->middleware('guest', ['except' => 'logout']);
 	}
 
     public function login()
@@ -29,9 +29,15 @@ class DealerController extends FrontController
     {
     	$user = DB::table('Accounts')->where('username', $request->log_email)->where('password', $request->log_password)->first();
     	if($user) {
-    		Auth::guard('user')->loginUsingId($user->RowID);
+    		Auth::guard('user')->loginUsingId($user->RowID); //true eklenecek
     		return back();
     	}
-    	return redirect()->route('dealer.login');
+    	return redirect()->route('dealer.login')->with('failure', 'Giriş işleminiz gerçekleşmedi');
+    }
+
+    public function logout()
+    {
+    	auth()->guard('user')->logout();
+    	return back();
     }
 }

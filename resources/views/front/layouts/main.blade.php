@@ -36,37 +36,36 @@
 
 <!--Body-->
 <body>
-
-<!--Login Modal-->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                <h2>Giriş Yap veya <a href="#">Kayıt Ol</a></h2>
-            </div>
-            <div class="modal-body">
-                <form class="login-form" method="POST" action="{{route('dealer.login.p')}}">
-                    <div class="form-group group">
-                        <label for="log-email">E-posta</label>
-                        <input type="" class="form-control" name="log_email" id="log-email" placeholder="E-posta Adresiniz" required>
-                    </div>
-                    <div class="form-group group">
-                        <label for="log-password">Şifre</label>
-                        <input type="text" class="form-control" name="log_password" id="log-password" placeholder="Şifreniz" required>
-                        <a class="help-link" href="#">Şifremi Unuttum</a>
-                    </div>
-                    {{-- <div class="checkbox">
-                        <label><input type="checkbox" name="remember"> Remember me</label>
-                    </div> --}}
-                    <input class="btn btn-success" type="submit" value="Giriş">
-                    {{ csrf_field() }}
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+@if(Route::getFacadeRoot()->current()->uri() != 'dealer-login')
+    @if(auth()->guard('user')->guest())
+    <!--Login Modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                    <h2>Bayimiz değilseniz <a href="{{url('dealership-request')}}">buradan</a> bayilik isteği oluşturabilirsiniz.</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form" method="POST" action="{{route('dealer.login.p')}}">
+                        <div class="form-group group">
+                            <label for="log-email">E-posta</label>
+                            <input type="email" class="form-control" name="log_email" id="log-email" placeholder="E-posta Adresiniz" required>
+                        </div>
+                        <div class="form-group group">
+                            <label for="log-password">Şifre</label>
+                            <input type="text" class="form-control" name="log_password" id="log-password" placeholder="Şifreniz" required>
+                        </div>
+                        
+                        <input class="btn btn-success" type="submit" value="Giriş">
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    @endif
+@endif
 <!--Header-->
 <header data-offset-top="500" data-stuck="600"><!--data-offset-top is when header converts to small variant and data-stuck when it becomes visible. Values in px represent position of scroll from top. Make sure there is at least 100px between those two values for smooth animation-->
 
@@ -170,7 +169,11 @@
             <button class="search-btn btn-outlined-invert"><i class="icon-magnifier"></i></button>
             <div class="middle-btns">
                 <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span>Favoriler</span></a>
+                @if(auth()->guard('user')->guest())
                 <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span>Giriş</span></a>
+                @else
+                <a class="login-btn btn-outlined-invert" href="{{route('dealer.logout')}}"><i class="icon-profile"></i> <span>Çıkış</span></a>
+                @endif
             </div>
             <div class="cart-btn">
                 <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i><span>3</span></a>

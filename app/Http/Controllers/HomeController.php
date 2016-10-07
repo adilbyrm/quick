@@ -12,7 +12,6 @@ class HomeController extends FrontController
 {
     public function homepage()
     {
-    	// return session::all();
     	return view('front.home.index');
     }
 }
