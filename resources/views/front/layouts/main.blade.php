@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <base href="{{url('/resources/assets/front')}}/" />
     <title>Reis Elektronik A.Ş</title>
     <!--SEO Meta Tags-->
@@ -45,20 +46,21 @@
                 <h2>Giriş Yap veya <a href="#">Kayıt Ol</a></h2>
             </div>
             <div class="modal-body">
-                <form class="login-form">
+                <form class="login-form" method="POST" action="{{route('dealer.login.p', 15)}}">
                     <div class="form-group group">
                         <label for="log-email">E-posta</label>
-                        <input type="email" class="form-control" name="log-email" id="log-email" placeholder="E-posta Adresiniz" required>
+                        <input type="email" class="form-control" name="log_email" id="log-email" placeholder="E-posta Adresiniz" required>
                     </div>
                     <div class="form-group group">
                         <label for="log-password">Şifre</label>
-                        <input type="text" class="form-control" name="log-password" id="log-password" placeholder="Şifreniz" required>
+                        <input type="text" class="form-control" name="log_password" id="log-password" placeholder="Şifreniz" required>
                         <a class="help-link" href="#">Şifremi Unuttum</a>
                     </div>
                     {{-- <div class="checkbox">
                         <label><input type="checkbox" name="remember"> Remember me</label>
                     </div> --}}
                     <input class="btn btn-success" type="submit" value="Giriş">
+                    {{ csrf_field() }}
                 </form>
             </div>
         </div><!-- /.modal-content -->
