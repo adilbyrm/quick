@@ -218,10 +218,10 @@
 ##################################################
 ##################################################-->
 @yield('content')
-        <!--
-    ##################################################
-    ##################################################
-    ##################################################-->
+    <!--
+##################################################
+##################################################
+##################################################-->
 
 <!--Sticky Buttons-->
 <div class="sticky-btns">
@@ -254,28 +254,28 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-md-8 col-sm-8">
-                <h2 class="light-color">Subscribe to our news</h2>
+                <h2 class="light-color">Bültenimize abone olun</h2>
 
                 <!--Mail Chimp Subscription Form-->
-                <form class="subscr-form" role="form" action="//8guild.us3.list-manage.com/subscribe/post?u=168a366a98d3248fbc35c0b67&amp;id=d704057a31" target="_blank" method="post" autocomplete="off">
+                <form class="subscr-form" role="form" action="" target="_blank" method="post" autocomplete="off">
                     <div class="form-group">
-                        <label class="sr-only" for="subscr-name">Enter name</label>
-                        <input type="text" class="form-control" name="FNAME" id="subscr-name" placeholder="Enter name" required>
+                        <label class="sr-only" for="subscr-name">Adınız</label>
+                        <input type="text" class="form-control" name="FNAME" id="subscr-name" placeholder="Adınızı giriniz" required>
                         <button class="subscr-next"><i class="icon-arrow-right"></i></button>
                     </div>
                     <div class="form-group fff" style="display: none">
-                        <label class="sr-only" for="subscr-email">Enter email</label>
-                        <input type="email" class="form-control" name="EMAIL" id="subscr-email" placeholder="Enter email" required>
+                        <label class="sr-only" for="subscr-email">E-posta</label>
+                        <input type="email" class="form-control" name="EMAIL" id="subscr-email" placeholder="E-posta adresinizi giriniz" required>
                         <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                         <div style="position: absolute; left: -5000px;"><input type="text" name="b_168a366a98d3248fbc35c0b67_d704057a31" tabindex="-1" value=""></div>
                         <button type="submit" id="subscr-submit"><i class="icon-check"></i></button>
                     </div>
                 </form>
                 <!--Mail Chimp Subscription Form Close-->
-                <p class="p-style2">Please fill the field before continuing</p>
+                <p class="p-style2">Gerekli alanları doldurunuz</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-1">
-                <p class="p-style3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <p class="p-style3">Ürünlerimizle ilgili gelişmelerden, kampanyalardan ve duyurulardan haberdar olmak için bültenimize üye olabilirsiniz.</p>
             </div>
         </div>
     </div>
@@ -287,7 +287,7 @@
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-5">
                 <div class="info">
-                    <a class="logo" href="index.html"><img src="img/logo.png" alt="Bushido"/></a>
+                    <a class="logo" href="{{url('/')}}"><img src="img/logo.png" alt="Reis Elektronik A.Ş"/></a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
                     <div class="social">
                         <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
@@ -309,7 +309,7 @@
                 </ul>
             </div>
             <div class="contacts col-lg-3 col-md-3 col-sm-3">
-                <h2>Contacts</h2>
+                <h2>İletişim Bilgileri</h2>
                 <p class="p-style3">
                     4120 Lenox Avenue, New York, NY,<br/>
                     10035 76 Saint Nicholas Avenue<br/>
@@ -322,7 +322,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-lg-7 col-md-7 col-sm-7">
-                    <p>&copy; 2014 BUSHIDO. All Rights Reserved. Designed by <a href="http://8guild.com/" target="_blank">8Guild</a></p>
+                    <p>&copy; {{Date('Y')}} Reis Elektronik A.Ş. Tüm hakları saklıdır. by <a href="#" target="_blank">Akademi Yazılım</a></p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="payment">
