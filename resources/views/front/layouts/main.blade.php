@@ -44,7 +44,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                    <h2>Bayimiz değilseniz <a href="{{url('dealership-request')}}">buradan</a> bayilik isteği oluşturabilirsiniz.</h2>
+                    <h2>Bayimiz değilseniz <a href="{{route('dealer.request')}}">buradan</a> bayilik isteği oluşturabilirsiniz.</h2>
                 </div>
                 <div class="modal-body">
                     <form class="login-form" method="POST" action="{{route('dealer.login.p')}}">
@@ -168,7 +168,7 @@
         <div class="toolbar group">
             <button class="search-btn btn-outlined-invert"><i class="icon-magnifier"></i></button>
             <div class="middle-btns">
-                <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span>Favoriler</span></a>
+                <a class="btn-outlined-invert" href="{{route('dealer.profile')}}"><i class="icon-setting-2"></i> <span>Hesabım</span></a>
                 @if(auth()->guard('user')->guest())
                 <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span>Giriş</span></a>
                 @else

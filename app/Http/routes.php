@@ -29,10 +29,6 @@ Route::group(['middleware' => ['web']], function () {
 		// dd(auth()->guard('admin')->check());
 		// dd(auth()->guard('admin')->user()->username);
 		
-		// dd(DB::table('Products')->get());
-		
-		// dd(DB::table('Products')->where('RowID', '3')->get());
-
 		/*$guid = getGUID();
 		DB::statement("INSERT INTO 
 			Products (Name, RowAddDateTime, RowAddUserNo, RowEditDateTime, RowEditUserNo, ID, Status, _SynchronizationID_)
@@ -43,4 +39,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('dealer-login', ['as' => 'dealer.login', 'uses' => 'DealerController@login']);
 	Route::post('dealer-login', ['as' => 'dealer.login.p', 'uses' => 'DealerController@loginP']);
 	Route::get('dealer-logout', ['as' => 'dealer.logout', 'uses' => 'DealerController@logout']);
+	Route::get('dealer-profile', ['as' => 'dealer.profile', 'uses' => 'DealerProfileController@profile']);
+	Route::get('dealership-request', ['as' => 'dealer.request', 'uses' => 'DealerProfileController@dealerRequest']);
 });

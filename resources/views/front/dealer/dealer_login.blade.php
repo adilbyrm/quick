@@ -38,7 +38,7 @@
             <!--Registration-->
             <div class="col-lg-7 col-md-7 col-sm-7">
                 <div class="registr-form" style="min-height:287px;text-align:center;padding-top:90px">
-                    <h1>Bayimiz değilseniz <a href="{{url('dealership-request')}}">buradan</a> bayilik isteği oluşturabilirsiniz.</h1>
+                    <h1>Bayimiz değilseniz <a href="{{route('dealer.request')}}">buradan</a> bayilik isteği oluşturabilirsiniz.</h1>
                 </div>
             </div>
         </div>
