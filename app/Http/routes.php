@@ -26,8 +26,8 @@
 Route::group(['middleware' => ['web']], function () {
     //Route::get('/', function() {
 
-		// dd(auth()->guard('admin')->check());
-		// dd(auth()->guard('admin')->user()->username);
+		// dd(auth()->guard('user')->check());
+		// dd(auth()->guard('user')->user()->username);
 		
 		/*$guid = getGUID();
 		DB::statement("INSERT INTO 

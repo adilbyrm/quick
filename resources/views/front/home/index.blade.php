@@ -41,7 +41,7 @@
     <!--Categories-->
     <section class="cat-tiles">
         <div class="container">
-            <h2>Browse categories</h2>
+            {{-- <h2>Browse categories</h2> --}}
             <div class="row">
                 <!--Category-->
                 <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
