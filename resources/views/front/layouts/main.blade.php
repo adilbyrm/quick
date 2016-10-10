@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group group">
                             <label for="log-password">Şifre</label>
-                            <input type="text" class="form-control" name="log_password" id="log-password" placeholder="Şifreniz" required>
+                            <input type="password" class="form-control" name="log_password" id="log-password" placeholder="Şifreniz" required>
                         </div>
                         
                         <input class="btn btn-success" type="submit" value="Giriş">

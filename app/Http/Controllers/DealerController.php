@@ -37,7 +37,8 @@ class DealerController extends FrontController
 
     public function logout()
     {
-    	auth()->guard('user')->logout();
+    	// auth()->guard('user')->logout();
+        session()->flush();
     	return back();
     }
 }

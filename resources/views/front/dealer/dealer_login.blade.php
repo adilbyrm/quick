@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group group">
                         <label for="log-password2">Şifre</label>
-                        <input type="text" class="form-control" name="log_password" id="log-password2" placeholder="Şifreniz" required>
+                        <input type="password" class="form-control" name="log_password" id="log-password2" placeholder="Şifreniz" required>
                     </div>
                     
                     <input class="btn btn-success" type="submit" value="Giriş">
