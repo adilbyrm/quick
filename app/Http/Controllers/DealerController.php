@@ -29,7 +29,7 @@ class DealerController extends FrontController
     {
     	$user = DB::table('Accounts')->where('username', $request->log_email)->where('password', $request->log_password)->first();
     	if($user) {
-    		Auth::guard('user')->loginUsingId($user->RowID); //true eklenecek
+    		Auth::guard('user')->loginUsingId($user->RowID, true); 
     		return redirect()->intended(session()->get('_previous.url'));
     	}
     	return redirect()->route('dealer.login')->with('failure', 'Giriş işleminiz gerçekleşmedi');
@@ -37,8 +37,7 @@ class DealerController extends FrontController
 
     public function logout()
     {
-    	// auth()->guard('user')->logout();
-        session()->flush();
+    	auth()->guard('user')->logout();
     	return back();
     }
 }

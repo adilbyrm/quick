@@ -13,6 +13,10 @@ class User extends Authenticatable
      */
    // protected $fillable = [];
 
+    const CREATED_AT = 'RowAddDateTime';
+
+    const UPDATED_AT = 'RowEditDateTime';
+
     protected $table = 'Accounts';
 
     protected $primaryKey = 'RowID';
@@ -27,6 +31,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'RememberToken',
     ];
+
+    public function getRememberTokenName()
+    {
+        return 'RememberToken';
+    }
 }
