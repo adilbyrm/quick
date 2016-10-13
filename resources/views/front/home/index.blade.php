@@ -645,7 +645,7 @@
         </div>
     </section><!--Gallery Widget Close-->
 
-    @include('front.layouts.cozumortaklari')
+    @include('front.layouts.partials.cozumortaklari')
 
 </div><!--Page Content Close-->
 @stop    

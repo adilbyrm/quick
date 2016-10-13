@@ -105,64 +105,8 @@
             </li>
         </ul>
 
-        <!--Mobile Menu Toggle-->
-        <div class="menu-toggle"><i class="fa fa-list"></i></div>
-        <div class="mobile-border"><span></span></div>
-
-        <!--Main Menu-->
-        <nav class="menu">
-            <ul class="main">
-                <li class="hide-sm"><a href="{{url('/')}}">Anasayfa</a></li>
-                <li class="has-submenu"><a href="#">Kurumsal<i class="fa fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">Kurumsal 1</a></li>
-                        <li><a href="#">Kurumsal 2</a></li>
-                        <li><a href="#">Kurumsal 3</a></li>
-                    </ul>
-                </li>
-                <li class="hide-sm"><a href="#">Hakkımızda</a></li>
-                <li class="hide-sm"><a href="#">İletişim</a></li>
-            </ul>
-            <ul class="catalog">
-                <li class="has-submenu"><a href="shop-filters-left-3cols.html">Marka 1<i class="fa fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">Nokia</a></li>
-                        <li class="has-submenu"><a href="#">iPhone</a><!--Class "has-submenu" for adding carret and dropdown-->
-                            <ul class="sub-submenu">
-                                <li><a href="#">iPhone 4</a></li>
-                                <li><a href="#">iPhone 4s</a></li>
-                                <li><a href="#">iPhone 5c</a></li>
-                                <li><a href="#">iPhone 5s</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">HTC</a></li>
-                        <li class="has-submenu"><a href="#">Samsung</a>
-                            <ul class="sub-submenu">
-                                <li><a href="#">Galaxy Note 3</a></li>
-                                <li><a href="#">Galaxy S5</a></li>
-                                <li><a href="#">Galaxy S3 Neo</a></li>
-                                <li><a href="#">Galaxy Gear</a></li>
-                                <li><a href="#">Galaxy S Duos 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">BlackBerry</a></li>
-                        <li class="offer">
-                            <div class="col-1">
-                                <p class="p-style2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                            <div class="col-2">
-                                <img src="img/offers/menu-drodown-offer.jpg" alt="Special Offer"/>
-                                <a class="btn btn-block" href="#"><span>584$</span>Special offer</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="shop-filters-left-3cols.html">Marka 2</a></li>
-                <li><a href="shop-filters-left-3cols.html">Marka 3</a></li>
-                <li><a href="shop-filters-left-3cols.html">Marka 4</a></li>
-                <li><a href="shop-filters-left-3cols.html">Marka 5</a></li>
-            </ul>
-        </nav>
+        <!-- top menu -->
+        @include('front.layouts.partials.topmenu')
 
         <!--Toolbar-->
         <div class="toolbar group">

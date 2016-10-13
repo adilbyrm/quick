@@ -16,6 +16,7 @@ class DealerController extends FrontController
 {
 	public function __construct()
 	{
+        parent::__construct();
 		$this->middleware('XSSProtection');
 		$this->middleware('guest', ['except' => 'logout']);
 	}
