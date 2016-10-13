@@ -289,8 +289,7 @@ $(document).ready(function(e) {
 			[0, 1],
 			[340, 2],
 			[580, 3],
-			[991, 4],
-			[1200, 5]
+			[991, 4]
 		],
 		navigation : true,
 		theme: "",
