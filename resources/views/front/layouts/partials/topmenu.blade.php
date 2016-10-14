@@ -20,7 +20,7 @@
         <li class="has-submenu" style="background-color:#2ba8db"><a href="shop-filters-left-3cols.html">Markalar<i class="fa fa-chevron-down"></i></a>
             <ul class="submenu" style="width:auto">
             @foreach($trademarks as $tm)
-                <li><a href="#{{$tm->RowID}}">{{$tm->Name}}</a></li>
+                <li><a href="#{{$tm->RowID}}">{{ $tm->Name }}</a></li>
             @endforeach
             </ul>
         </li>

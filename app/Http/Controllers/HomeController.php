@@ -19,7 +19,10 @@ class HomeController extends FrontController
 
     public function homepage()
     {
-    	$products = DB::table('StockCards')->limit(12)->get();
+    	$products = DB::table('StockCards as S')
+					->select('S.RowID as stockID', 'S.Name AS stockName', 'T.Name AS trademarkName')
+    				->leftJoin('Trademarks as T', 'T.RowID', '=', 'S.TrademarkID')
+    				->limit(12)->get();
     	$productHtml = view('front.layouts.partials.singleProduct')->with('products', $products);
     	return view('front.home.index')->with('productHtml', $productHtml);
     }
