@@ -45,6 +45,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        // for token mismatch error
+        if($e instanceof \Illuminate\Session\TokenMismatchException) {
+            return back()->with('failure', 'İşleminiz gerçekleşmedi');
+        }
+        // /for token mismatch error
+
         return parent::render($request, $e);
     }
 }

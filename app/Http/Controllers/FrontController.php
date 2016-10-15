@@ -22,7 +22,7 @@ class FrontController extends Controller
     	});
 
     	Cache::remember('productGroups', 1, function() {
-    		return DB::table('StockGroups')->get();
+    		return DB::table('StockGroups')->limit(10)->get();
     	});
 
     	view()->share([
