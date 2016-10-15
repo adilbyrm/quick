@@ -10,16 +10,24 @@ use App\Http\Controllers\Controller;
 
 use DB;
 
+use Cache;
+
 class FrontController extends Controller
 {
     public function __construct()
     {
-    	$trademarks = DB::table('Trademarks')->limit(5)->get();
-    	$productGroups = DB::table('StockGroups')->get();
+
+    	Cache::remember('trademarks', 1, function() {
+	    	return DB::table('Trademarks')->limit(5)->get();
+    	});
+
+    	Cache::remember('productGroups', 1, function() {
+    		return DB::table('StockGroups')->get();
+    	});
 
     	view()->share([
-    			'trademarks' => $trademarks,
-    			'productGroups' => $productGroups
+    			'trademarks' => Cache::get('trademarks'),
+    			'productGroups' => Cache::get('productGroups')
 			]);
     }
 }

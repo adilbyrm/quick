@@ -19,38 +19,27 @@
     <ul class="catalog" style="text-align:left">
         <li class="has-submenu" style="background-color:#2ba8db"><a href="shop-filters-left-3cols.html">Markalar<i class="fa fa-chevron-down"></i></a>
             <ul class="submenu" style="width:auto">
-            @foreach($trademarks as $tm)
-                <li><a href="#{{$tm->RowID}}">{{ $tm->Name }}</a></li>
+            @foreach($trademarks as $trademark)
+                <li><a href="#{{ $trademark->RowID }}">{{ $trademark->Name }}</a></li>
             @endforeach
             </ul>
         </li>
-        <li class="has-submenu"><a href="shop-filters-left-3cols.html">Grup 1<i class="fa fa-chevron-down"></i></a>
-            <ul class="submenu" style="width:auto">
-                <li><a href="#">Grup 1</a></li>
-                <li><a href="#">Grup 1</a></li>
-                <li><a href="#">Grup 1</a></li>
-                <li><a href="#">Grup 1</a></li>
 
-            </ul>
-        </li>
-        <li><a href="shop-filters-left-3cols.html">Grup 2</a></li>
-        <li><a href="shop-filters-left-3cols.html">Grup 3</a></li>
-        <li class="has-submenu"><a href="shop-filters-left-3cols.html">Grup 4<i class="fa fa-chevron-down"></i></a>
-            <ul class="submenu" style="width:auto">
-                <li><a href="#">Nokia 4</a></li>
-                <li><a href="#">Nokia 4</a></li>
-                <li><a href="#">Nokia 4</a></li>
-                <li><a href="#">Nokia 4</a></li>
+        @foreach($productGroups as $key => $productGroup)
+            @if($key < 4)
+                <li><a href="#{{ $productGroup->RowID }}">{{ $productGroup->Name }}</a></li>
+            @else
+                @break {{-- butun dizinin donguye girmemesi icin else --}} 
+            @endif
+        @endforeach
 
-            </ul>
-        </li>
-        <li class="has-submenu"><a href="shop-filters-left-3cols.html">Grup 5<i class="fa fa-chevron-down"></i></a>
+        <li class="has-submenu"><a href="shop-filters-left-3cols.html">Diğer<i class="fa fa-chevron-down"></i></a>
             <ul class="submenu" style="width:auto">
-                <li><a href="#">Nokia 5</a></li>
-                <li><a href="#">Nokia 5</a></li>
-                <li><a href="#">Nokia 5</a></li>
-                <li><a href="#">Nokia 5</a></li>
-
+            @foreach($productGroups as $key => $productGroup)
+                @if($key > 3)
+                    <li><a href="#{{ $productGroup->RowID }}">{{ $productGroup->Name }}</a></li>
+                @endif
+            @endforeach
             </ul>
         </li>
     </ul>
