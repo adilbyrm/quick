@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     {
         // for token mismatch error
         if($e instanceof \Illuminate\Session\TokenMismatchException) {
-            return back()->with('failure', 'İşleminiz gerçekleşmedi');
+            return back()->with('commonFailure', 'İşleminiz gerçekleşmedi');
         }
         // /for token mismatch error
 

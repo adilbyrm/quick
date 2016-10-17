@@ -41,4 +41,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('dealer-logout', ['as' => 'dealer.logout', 'uses' => 'DealerController@logout']);
 	Route::get('dealer-profile', ['as' => 'dealer.profile', 'uses' => 'DealerProfileController@profile']);
 	Route::get('dealership-request', ['as' => 'dealer.request', 'uses' => 'DealerProfileController@dealerRequest']);
+
+	################ Cart ################
+	Route::get('add-to-cart/{stockID}', ['as' => 'add-to-cart', 'uses' => 'CartController@addToCart']);
 });

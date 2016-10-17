@@ -18,24 +18,41 @@
     <link href="masterslider/style/masterslider.css" rel="stylesheet" media="screen">
     <!--Styles-->
     <link href="css/styles.css" rel="stylesheet" media="screen">
+    <!--sweet alert-->
+    <link href="css/sweetalert.css" rel="stylesheet" media="screen">
     <!--Color Scheme-->
     <link class="color-scheme" href="css/colors/color-default.css" rel="stylesheet" media="screen">
     <!--Color Switcher-->
     <link href="color-switcher/color-switcher.css" rel="stylesheet" media="screen">
     <!--Modernizr-->
     <script src="js/libs/modernizr.custom.js"></script>
+
+    <script src="js/libs/jquery-1.11.1.min.js"></script>
+    <script src="js/libs/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/libs/jquery.easing.min.js"></script>
+    <script src="js/plugins/sweetalert.min.js"></script>
     <!--Adding Media Queries Support for IE8-->
     <!--[if lt IE 9]>
     <script src="js/plugins/respond.js"></script>
     <![endif]-->
-    <!--Google Analytics-->
-    <script type="text/javascript">
-        
-    </script>
+
 </head>
 
 <!--Body-->
 <body>
+
+@if(session()->has('commonFailure'))
+    <script>
+        swal({
+            title: "",
+            text: "{{ session()->get('commonFailure') }}",
+            type: "error",
+            confirmButtonText: "Tamam",
+            html: true
+        })
+    </script>
+@endif
+
 @if(Route::getFacadeRoot()->current()->uri() != 'dealer-login')
     @if(auth()->guard('user')->guest())
     <!--Login Modal-->
@@ -286,10 +303,10 @@
     </div>
 </footer><!--Footer Close-->
 
+
+
 <!--Javascript (jQuery) Libraries and Plugins-->
-<script src="js/libs/jquery-1.11.1.min.js"></script>
-<script src="js/libs/jquery-ui-1.10.4.custom.min.js"></script>
-<script src="js/libs/jquery.easing.min.js"></script>
+
 <script src="js/plugins/bootstrap.min.js"></script>
 <script src="js/plugins/smoothscroll.js"></script>
 <script src="js/plugins/jquery.validate.min.js"></script>
@@ -305,23 +322,7 @@
 <script src="js/scripts.js"></script>
 <script src="color-switcher/color-switcher.js"></script>
 
-<!--Google Remarketing Tag (Placed before </body>)-->
-<script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 966923546;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-</script>
-{{-- 
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
- --}}
-<noscript>
-    <div style="display:inline;">
-        {{-- <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/966923546/?value=0&amp;guid=ON&amp;script=0"/> --}}
-    </div>
-</noscript>
+
 
 </body><!--Body Close-->
 </html>

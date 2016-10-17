@@ -18,7 +18,7 @@
                     <span></span>
                 </div>
                 <!--Add To Cart Button-->
-                <a class="add-cart-btn" href="javascript:cart.addToCart()"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
+                <a class="add-cart-btn" href="{{ route('add-to-cart', $pro->stockID) }}"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
                 <!--Share Button-->
                 <div class="share-btn">
                     <div class="hover-state">

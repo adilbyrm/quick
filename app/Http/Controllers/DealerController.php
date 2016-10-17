@@ -33,7 +33,7 @@ class DealerController extends FrontController
     		Auth::guard('user')->loginUsingId($user->RowID, true); 
     		return redirect()->intended(session()->get('_previous.url'));
     	}
-    	return redirect()->route('dealer.login')->with('failure', 'Giriş işleminiz gerçekleşmedi');
+    	return redirect()->route('dealer.login')->with('commonFailure', 'Giriş işleminiz gerçekleşmedi');
     }
 
     public function logout()

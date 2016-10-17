@@ -2,7 +2,8 @@
 
 @section('content')
 
-        <!--Page Content-->
+
+<!--Page Content-->
 <div class="page-content">
 
     <!--Breadcrumbs-->
@@ -18,9 +19,6 @@
         <div class="row">
             <!--Login-->
             <div class="col-lg-5 col-md-5 col-sm-5">
-                @if(session()->has('failure'))
-                    <div class="alert alert-danger">{{session()->get('failure')}}</div>
-                @endif
                 <form class="login-form" method="POST" action="{{route('dealer.login.p')}}">
                     <div class="form-group group">
                         <label for="log-email2">E-posta</label>

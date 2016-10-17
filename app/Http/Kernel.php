@@ -48,8 +48,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
-        'admin.guest' => \App\Http\Middleware\AdminGuest::class,
         'XSSProtection' => \App\Http\Middleware\XSSProtection::class,
         'VerifyGETCsrfToken' => \App\Http\Middleware\VerifyGETCsrfToken::class
     ];
