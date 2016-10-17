@@ -6,27 +6,40 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    public function getCart()
+
+    const CREATED_AT = 'RowAddDateTime';
+
+    const UPDATED_AT = 'RowEditDateTime';
+
+    protected $table = 'Carts';
+
+    protected $primaryKey = 'RowID';
+
+    protected $guarded = [
+        'RowID'
+    ];
+
+    public static function getCart()
     {
 
     }
 
-    public function addToCart()
+    public static function addToCart()
     {
     	
     }
 
-    public function updateCart()
+    public static function updateCart()
     {
     	
     }
 
-    public function deleteCart()
+    public static function deleteCart()
     {
     	
     }
 
-    public function trancateCart()
+    public static function trancateCart()
     {
     	
     }

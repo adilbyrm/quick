@@ -43,5 +43,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('dealership-request', ['as' => 'dealer.request', 'uses' => 'DealerProfileController@dealerRequest']);
 
 	################ Cart ################
-	Route::get('add-to-cart/{stockID}', ['as' => 'add-to-cart', 'uses' => 'CartController@addToCart']);
+	Route::post('add-to-cart', ['as' => 'add-to-cart', 'uses' => 'CartController@addToCart']);
 });

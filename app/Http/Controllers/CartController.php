@@ -18,8 +18,12 @@ class CartController extends FrontController
 		$this->middleware('auth');
 	}
 
-    public function addToCart($stockID)
+	/**
+	 * AJAX Request from main.blade (homepage)
+	 */
+    public function addToCart(Request $request)
     {
-    	return $stockID;
+    	return ['type' => 'success', 'message' => 'added product (AJAX): ' . $request->input('ID')];
+    	// return ['type' => 'error', 'message' => 'didn\'t add product (AJAX): ' . $request->input('ID')];
     }
 }

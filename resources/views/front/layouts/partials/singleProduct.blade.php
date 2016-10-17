@@ -1,5 +1,5 @@
 @foreach($products as $pro)
-<div class="col-lg-3 col-md-4 col-sm-6">
+<div class="col-lg-3 col-md-4 col-sm-6" id="product{{ $pro->stockID }}">
     <div class="tile">
         <div class="badges">
             <span class="sale"></span>
@@ -18,7 +18,7 @@
                     <span></span>
                 </div>
                 <!--Add To Cart Button-->
-                <a class="add-cart-btn" href="{{ route('add-to-cart', $pro->stockID) }}"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
+                <a class="add-cart-btn" href="javascript:;" onclick="addToCart(this, '{{ $pro->stockID }}')"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
                 <!--Share Button-->
                 <div class="share-btn">
                     <div class="hover-state">

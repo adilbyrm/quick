@@ -35,7 +35,9 @@
     <!--[if lt IE 9]>
     <script src="js/plugins/respond.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        a.href-disabled { pointer-events: none; cursor: default; }
+    </style>
 </head>
 
 <!--Body-->
@@ -47,6 +49,17 @@
             title: "",
             text: "{{ session()->get('commonFailure') }}",
             type: "error",
+            confirmButtonText: "Tamam",
+            html: true
+        })
+    </script>
+@endif
+@if(session()->has('commonSuccess'))
+    <script>
+        swal({
+            title: "",
+            text: "{{ session()->get('commonSuccess') }}",
+            type: "success",
             confirmButtonText: "Tamam",
             html: true
         })
@@ -322,7 +335,42 @@
 <script src="js/scripts.js"></script>
 <script src="color-switcher/color-switcher.js"></script>
 
-
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+    function addToCart(elem, ID) {
+        $.ajax({
+            url: '{{ route("add-to-cart") }}',
+            method: "POST",
+            data: {ID: ID},
+            beforeSend: function() {
+                $(elem).addClass('href-disabled')
+            },
+            complete: function() {
+                $(elem).removeClass('href-disabled')
+            }
+        }).done(function(resp) {
+            swal({
+                title: "",
+                text: resp.message,
+                type: resp.type,
+                confirmButtonText: "Tamam",
+                html: true
+            })
+        }).fail(function() {
+            swal({
+                title: "",
+                text: "Bir hata oluştu, tekrar deneyiniz",
+                type: "error",
+                confirmButtonText: "Tamam"
+            })
+        })
+    }
+    
+</script>
 
 </body><!--Body Close-->
 </html>
