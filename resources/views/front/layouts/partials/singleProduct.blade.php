@@ -18,7 +18,9 @@
                     <span></span>
                 </div>
                 <!--Add To Cart Button-->
+                {{-- @if(auth()->check()) --}}
                 <a class="add-cart-btn" href="javascript:;" onclick="addToCart(this, '{{ $pro->stockID }}')"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
+                {{-- @endif --}}
                 <!--Share Button-->
                 <div class="share-btn">
                     <div class="hover-state">

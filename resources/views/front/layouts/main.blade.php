@@ -43,22 +43,22 @@
 <!--Body-->
 <body>
 
-@if(session()->has('commonFailure'))
+@if(session()->has('failure'))
     <script>
         swal({
             title: "",
-            text: "{{ session()->get('commonFailure') }}",
+            text: "{{ session()->get('failure') }}",
             type: "error",
             confirmButtonText: "Tamam",
             html: true
         })
     </script>
 @endif
-@if(session()->has('commonSuccess'))
+@if(session()->has('success'))
     <script>
         swal({
             title: "",
-            text: "{{ session()->get('commonSuccess') }}",
+            text: "{{ session()->get('success') }}",
             type: "success",
             confirmButtonText: "Tamam",
             html: true
@@ -357,7 +357,8 @@
                 title: "",
                 text: resp.message,
                 type: resp.type,
-                confirmButtonText: "Tamam",
+                showConfirmButton: false,
+                timer: 2000,
                 html: true
             })
         }).fail(function() {
