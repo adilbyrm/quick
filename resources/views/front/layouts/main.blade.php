@@ -150,43 +150,15 @@
                 @endif
             </div>
             <div class="cart-btn">
-                <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i><span>3</span></a>
+                
+                <!--##############################################
+                ################# top box ########################
+                ###############################################-->
+                @include('front.layouts.partials.topBox')
+                <!--##############################################
+                ################# /top box #######################
+                ###############################################-->
 
-                <!--Cart Dropdown-->
-                <div class="cart-dropdown">
-                    <span></span><!--Small rectangle to overlap Cart button-->
-                    <div class="body">
-                        <table>
-                            <tr>
-                                <th>Items</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                            <tr class="item">
-                                <td><div class="delete"></div><a href="#">Good Joo-Joo Surfb</a></td>
-                                <td><input type="text" value="1"></td>
-                                <td class="price">89 005 $</td>
-                            </tr>
-                            <tr class="item">
-                                <td><div class="delete"></div><a href="#">Good Joo-Joo Item</a></td>
-                                <td><input type="text" value="2"></td>
-                                <td class="price">4 300 $</td>
-                            </tr>
-                            <tr class="item">
-                                <td><div class="delete"></div><a href="#">Good Joo-Joo</a></td>
-                                <td><input type="text" value="5"></td>
-                                <td class="price">84 $</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="footer group">
-                        <div class="buttons">
-                            <a class="btn btn-outlined-invert" href="checkout.html"><i class="icon-download"></i>Checkout</a>
-                            <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i>To cart</a>
-                        </div>
-                        <div class="total">93 389 $</div>
-                    </div>
-                </div><!--Cart Dropdown Close-->
             </div>
         </div><!--Toolbar Close-->
     </div>
@@ -341,11 +313,13 @@
             'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
         }
     })
-    function addToCart(elem, ID) {
+
+    // single product add
+    function addToCart(elem, prodcutID) {
         $.ajax({
             url: '{{ route("add-to-cart") }}',
             method: "POST",
-            data: {ID: ID},
+            data: {prodcutID: prodcutID},
             beforeSend: function() {
                 $(elem).addClass('href-disabled')
             },
@@ -370,7 +344,16 @@
             })
         })
     }
-    
+    // /single product add
+
+    // get top menu box
+    function getTopBox() {
+        $.post('{{ route("get-top-menu-box") }}', function(resp) {
+
+        })
+    }
+    // /get top menu box
+    // getTopBox();
 </script>
 
 </body><!--Body Close-->

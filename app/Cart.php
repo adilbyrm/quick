@@ -19,27 +19,44 @@ class Cart extends Model
         'RowID'
     ];
 
-    public static function getCart()
+    protected $accountID;
+    
+    public function sessionID()
+    {
+        return session()->getId();
+    }
+
+    public function accountID()
+    {
+        return $this->accountID = auth()->guard('user')->user()->RowID;
+    }
+
+    public function salesmanID()
     {
 
     }
 
-    public static function addToCart()
+    public function getCart()
+    {
+        
+    }
+
+    public function addToCart($productID)
+    {
+    	// Cart::where([])
+    }
+
+    public function updateCart()
     {
     	
     }
 
-    public static function updateCart()
+    public function deleteCart()
     {
     	
     }
 
-    public static function deleteCart()
-    {
-    	
-    }
-
-    public static function trancateCart()
+    public function trancateCart()
     {
     	
     }

@@ -23,7 +23,13 @@ class CartController extends FrontController
 	 */
     public function addToCart(Request $request)
     {
-    	return ['type' => 'success', 'message' => 'added product (AJAX): ' . $request->input('ID')];
-    	// return ['type' => 'error', 'message' => 'didn\'t add product (AJAX): ' . $request->input('ID')];
+    	return \Cart::addToCart($request->input('prodcutID'));
+    	// return ['type' => 'success', 'message' => 'added product (AJAX): ' . $request->input('prodcutIDprodcutID')];
+    	// return ['type' => 'error', 'message' => 'didn\'t add product (AJAX): ' . $request->input('prodcutID')];
+    }
+
+    public function getTopMenuBox()
+    {
+
     }
 }

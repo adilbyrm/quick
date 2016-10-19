@@ -19,6 +19,7 @@ class HomeController extends FrontController
 
     public function homepage()
     {
+
     	$products = DB::table('StockCards as S')
 					->select('S.RowID as stockID', 'S.Name AS stockName', 'T.Name AS trademarkName')
     				->leftJoin('Trademarks as T', 'T.RowID', '=', 'S.TrademarkID')
