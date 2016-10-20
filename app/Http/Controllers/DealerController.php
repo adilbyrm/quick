@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use Session;
-
 use DB;
-
 use Auth;
 
 class DealerController extends FrontController

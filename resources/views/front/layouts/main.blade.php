@@ -154,7 +154,7 @@
                 <!--##############################################
                 ################# top box ########################
                 ###############################################-->
-                @include('front.layouts.partials.topBox')
+                {{-- @include('front.layouts.partials.topBox') --}}
                 <!--##############################################
                 ################# /top box #######################
                 ###############################################-->
@@ -324,7 +324,8 @@
                 $(elem).addClass('href-disabled')
             },
             complete: function() {
-                $(elem).removeClass('href-disabled')
+                $(elem).removeClass('href-disabled');
+                getTopBox();
             }
         }).done(function(resp) {
             swal({
@@ -349,11 +350,11 @@
     // get top menu box
     function getTopBox() {
         $.post('{{ route("get-top-menu-box") }}', function(resp) {
-
+            $(".cart-btn").html(resp);
         })
     }
     // /get top menu box
-    // getTopBox();
+    getTopBox();
 </script>
 
 </body><!--Body Close-->

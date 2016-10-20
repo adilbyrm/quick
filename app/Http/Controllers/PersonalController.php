@@ -8,11 +8,11 @@ use App\Http\Requests;
 
 use Session;
 
-class SalesPersonController extends FrontController
+class PersonalController extends FrontController
 {
     public function login()
     {
     	return session::all();
-    	return view('front.dealer.salesperson_login');
+    	return view('front.personal.personal_login');
     }
 }
