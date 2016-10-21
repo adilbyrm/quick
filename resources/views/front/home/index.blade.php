@@ -92,7 +92,7 @@
     <!--Catalog Grid-->
     <section class="catalog-grid">
         <div class="container">
-            <h2 class="primary-color">Catalog picks</h2>
+            {{-- <h2 class="primary-color">Ürünler</h2> --}}
             <div class="row">
                 <!--Tile-->
                 

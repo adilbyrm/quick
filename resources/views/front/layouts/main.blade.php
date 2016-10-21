@@ -339,7 +339,8 @@
         }).fail(function(xhr, status, error) {
             swal({
                 title: "",
-                text: xhr.responseText,
+                // text: xhr.responseText,
+                text: "İşlem gerçekleşmedi",
                 type: "error",
                 confirmButtonText: "Tamam"
             })

@@ -27,7 +27,7 @@
                     <a class="btn btn-outlined-invert" href="checkout.html"><i class="icon-download"></i>Tamamla</a>
                     <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i>Sepete Git</a>
                 </div>
-                <div class="total">93 389 $</div>
+                <div class="total">{{ nf(Cart::totalCart()) }} TL</div>
             </div>
         @else
             <div class="body">Sepetinizde henüz ürün bulunmamaktadır!</div>

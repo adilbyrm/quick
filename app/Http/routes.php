@@ -36,11 +36,16 @@ Route::group(['middleware' => ['web']], function () {
 	//});
 
     Route::get('/', ['as' => 'homepage', 'uses' => 'HomeController@homepage']);
+    Route::get('about', ['as' => 'about', 'uses' => 'ContentController@about']);
+    Route::get('contact', ['as' => 'contact', 'uses' => 'ContentController@contact']);
+
+    ################ Dealer ################
 	Route::get('dealer-login', ['as' => 'dealer.login', 'uses' => 'DealerController@login']);
 	Route::post('dealer-login', ['as' => 'dealer.login.p', 'uses' => 'DealerController@loginP']);
 	Route::get('dealer-logout', ['as' => 'dealer.logout', 'uses' => 'DealerController@logout']);
 	Route::get('dealer-profile', ['as' => 'dealer.profile', 'uses' => 'DealerProfileController@profile']);
 	Route::get('dealership-request', ['as' => 'dealer.request', 'uses' => 'DealerProfileController@dealerRequest']);
+	################ /Dealer ################
 
 	################ Cart ################
 	/**

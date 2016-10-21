@@ -30,12 +30,18 @@ class Cart extends Model
 
     public function accountID()
     {
-        return auth()->guard('user')->user()->RowID;
+        if( auth()->guard('user')->check() ) {
+            return auth()->guard('user')->user()->ID;
+        }
+        return 0;
     }
 
-    public function personalID()
+    public function employeeID()
     {
-
+        // if( auth()->guard('employee')->check() ) {
+        //     return auth()->guard('employee')->user()->ID;
+        // }
+        return 0;
     }
 
     public function carts()
@@ -63,6 +69,7 @@ class Cart extends Model
     	$cart = $this->carts()->where('ProductID', $productID)->first();
         if($cart) {
             $cart->ProductCount += 1;
+            $cart->SessionID = $this->sessionID();
             if($cart->save()) {
                 Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; 1 adet artırıldı.');
                 return true;
@@ -70,16 +77,22 @@ class Cart extends Model
             Log::error('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; 1 adet artırma işlemi gerçekleşmedi.');
             return false;
         } else {
-            $guid = getGUID();
+            $ID = 1;
+            $lastInsert = DB::table('Carts')->select('RowID')->orderBy('RowID', 'DESC')->first();
+            if($lastInsert) {
+                $ID = $lastInsert->RowID + 1;
+            }
             $create = Cart::create([
                 'ProductID' => $productID,
                 'AccountID' => $this->accountID(),
+                'EmployeeID' => $this->employeeID(),
                 'ProductCount' => 1,
-                'SessionID' => $guid,
+                'SessionID' => $this->sessionID(),
                 'RowEditUserNo' => $this->accountID(),
                 'RowAddUserNo' => $this->accountID(),
                 'ProductSellPrice' => 0.00,
-                'OrderID' => 0
+                'OrderID' => 0,
+                'ID' => $ID
             ]);
             if($create) {
                 Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $create->RowID .', ProductID: '. $productID .'; yeni Cart oluşturuldu.');
@@ -112,5 +125,14 @@ class Cart extends Model
     public function trancateCart()
     {
     	
+    }
+
+    public function totalCart()
+    {
+        $total = 0;
+        foreach($this->getAllCarts() as $cart) {
+            $total += $cart->Price * $cart->ProductCount;
+        }
+        return $total;
     }
 }
