@@ -43,13 +43,21 @@ class Cart extends Model
         return Cart::where('AccountID', $this->accountID())->where('orderID', 0);
     }
 
+    /**
+     * AJAX - CartController
+     */
     public function getAllCarts()
     {
         return $this->carts()
-                    ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.RowID')
+                    ->select('Carts.RowID AS cartID', 'Carts.ProductID', 'Carts.ProductCount', 'StockCards.Name', 'StockCardSellPrices.Price')
+                    ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.ID')
+                    ->leftJoin('StockCardSellPrices', 'Carts.ProductID', '=', 'StockCardSellPrices.StockID')
                     ->get();
     }
 
+    /**
+     * AJAX - CartController
+     */
     public function addToCart($productID)
     {
     	$cart = $this->carts()->where('ProductID', $productID)->first();
@@ -88,9 +96,17 @@ class Cart extends Model
     	
     }
 
-    public function deleteCart()
+    /**
+     * AJAX - CartController
+     */
+    public function deleteCart($cartID)
     {
-    	
+    	if ( $this->carts()->where('RowID', $cartID)->delete() ) {
+            Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $cartID .'; cart silindi.');
+            return true;
+        }
+        Log::error('AccountID: '. $this->accountID() .', Cart.RowID: '. $cartID .'; cart silinemedi.');
+        return false;
     }
 
     public function trancateCart()

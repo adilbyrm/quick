@@ -52,5 +52,10 @@ Route::group(['middleware' => ['web']], function () {
 	 * AJAX - get top menu box - (function: main.blade)
 	 */
 	Route::post('get-top-menu-box', ['as' => 'get-top-menu-box', 'uses' => 'CartController@getTopMenuBox']);
+
+	/**
+	 * AJAX - top box - (function: main.blade)
+	 */
+	Route::post('delete-the-cart', ['as' => 'delete-the-cart', 'uses' => 'CartController@deleteTheCart']);
 	################ /Cart ################
 });

@@ -15,7 +15,7 @@ class CartController extends FrontController
 	{
 		parent::__construct();
 		$this->middleware('XSSProtection');
-		$this->middleware('auth');
+		$this->middleware('auth', ['except' => ['getTopMenuBox']]);
 	}
 
 	/**
@@ -34,8 +34,22 @@ class CartController extends FrontController
      */
     public function getTopMenuBox()
     {
-    	$carts = Cart::getAllCarts();
+    	$carts = [];
+
+    	if(auth()->check()) {
+    		$carts = Cart::getAllCarts();
+    	}
+
     	$html = view('front.layouts.partials.topBox')->with('carts', $carts);
+
     	return $html;
+    }
+
+    public function deleteTheCart(Request $request)
+    {
+    	if ( Cart::deleteCart($request->input('cartID')) ) {
+    		return '';
+    	}
+    	return 'does not deleted';
     }
 }

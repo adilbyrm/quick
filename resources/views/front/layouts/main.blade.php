@@ -326,20 +326,20 @@
             complete: function() {
                 $(elem).removeClass('href-disabled');
                 getTopBox();
+            },
+            success: function(resp) {
+                swal({
+                    title: "",
+                    text: resp.message,
+                    type: resp.type,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
-        }).done(function(resp) {
+        }).fail(function(xhr, status, error) {
             swal({
                 title: "",
-                text: resp.message,
-                type: resp.type,
-                showConfirmButton: false,
-                timer: 2000,
-                html: true
-            })
-        }).fail(function() {
-            swal({
-                title: "",
-                text: "Bir hata oluştu, tekrar deneyiniz",
+                text: xhr.responseText,
                 type: "error",
                 confirmButtonText: "Tamam"
             })
@@ -353,8 +353,17 @@
             $(".cart-btn").html(resp);
         })
     }
-    // /get top menu box
     getTopBox();
+    // /get top menu box
+
+    // one cart delete
+    function deleteTheCart(elem) {
+        var cartID = $(elem).data('id');
+        $.post('{{ route("delete-the-cart") }}', {cartID: cartID}, function(resp) {
+            getTopBox();
+        })
+    }
+    // one cart delete
 </script>
 
 </body><!--Body Close-->

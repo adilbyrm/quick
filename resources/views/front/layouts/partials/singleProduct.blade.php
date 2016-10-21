@@ -1,13 +1,13 @@
 @foreach($products as $pro)
-<div class="col-lg-3 col-md-4 col-sm-6" id="product{{ $pro->stockID }}">
+<div class="col-lg-3 col-md-4 col-sm-6">
     <div class="tile">
         <div class="badges">
             <span class="sale"></span>
         </div>
-        <div class="price-label">715,00 $</div>
+        <div class="price-label">{{ nf($pro->Price) }} <small>TL</small></div>
         <a href="#"><img src="img/catalog/tiles/1.jpg" alt="1"/></a>
         <div class="footer">
-            <a href="#">{{ $pro->stockName }}</a>
+            <a href="#{{ $pro->stockID }}">{{ $pro->stockName }}</a>
             <span>{{ $pro->trademarkName }}</span>
             <div class="tools">
                 <div class="rate">

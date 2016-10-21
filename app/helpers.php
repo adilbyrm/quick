@@ -30,3 +30,6 @@ function getGUID(){
     }
 }
 
+function nf($price, $decimal = 2, $decimalPoint = ',', $separator = '.') {
+    return number_format($price, $decimal, $decimalPoint, $separator);
+}
