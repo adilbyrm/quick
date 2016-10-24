@@ -119,7 +119,7 @@
         <a class="logo" href="{{url('/')}}"><img src="img/logo.png" alt="Reis Elektronik A.Ş"/></a>
 
         <!--Language / Currency Switchers-->
-        <ul class="switchers">
+        {{-- <ul class="switchers">
             <li>$
                 <ul class="dropdown">
                     <li><a href="#">&euro;</a></li>
@@ -133,7 +133,7 @@
                     <li><a href="#">Gr</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> --}}
 
         <!-- top menu -->
         @include('front.layouts.partials.topmenu')
@@ -342,7 +342,9 @@
                 // text: xhr.responseText,
                 text: "İşlem gerçekleşmedi",
                 type: "error",
-                confirmButtonText: "Tamam"
+                // confirmButtonText: "Tamam",
+                showConfirmButton: false,
+                timer: 2000
             })
         })
     }
