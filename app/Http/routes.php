@@ -63,4 +63,13 @@ Route::group(['middleware' => ['web']], function () {
 	 */
 	Route::post('delete-the-cart', ['as' => 'delete-the-cart', 'uses' => 'CartController@deleteTheCart']);
 	################ /Cart ################
+
+	Route::get('trademark/{trademarkID}/products', ['as' => 'products-of-trademark', 'uses' => 'ProductController@productsOfTrademark']);
+
+	Route::get('category/{categoryID}/products', ['as' => 'products-of-category', 'uses' => 'ProductController@productsOfCategory']);
+
+	Route::get('{productName}/{productID}', ['as' => 'product-detail', 'uses' => 'ProductController@productDetail']);
+
+
+
 });

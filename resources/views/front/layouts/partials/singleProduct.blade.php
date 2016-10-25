@@ -5,9 +5,9 @@
             <span class="sale"></span>
         </div>
         <div class="price-label">{{ nf($pro->Price) }} <small>TL</small></div>
-        <a href="#"><img src="img/catalog/tiles/1.jpg" alt="1"/></a>
+        <a href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}"><img src="img/catalog/tiles/1.jpg" alt="1"/></a>
         <div class="footer">
-            <a href="#{{ $pro->stockID }}">{{ $pro->stockName }}</a>
+            <a href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}">{{ $pro->stockName }}</a>
             <span>{{ $pro->trademarkName }}</span>
             <div class="tools">
                 <div class="rate">

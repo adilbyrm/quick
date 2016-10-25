@@ -8,11 +8,11 @@ use App\Http\Requests;
 
 use Session;
 
-class PersonalController extends FrontController
+class EmployeeController extends FrontController
 {
     public function login()
     {
     	return session::all();
-    	return view('front.personal.personal_login');
+    	return view('front.employee.employee_login');
     }
 }
