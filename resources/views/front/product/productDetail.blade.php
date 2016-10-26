@@ -1,18 +1,21 @@
+@extends('front.layouts.main')
+
+@section('content')
 <!--Page Content-->
 <div class="page-content">
 
     <!--Breadcrumbs-->
     <ol class="breadcrumb">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop-filters-left-3cols.html">Shop - filters left 3 cols</a></li>
-        <li>Shop - single item v1</li>
+        <li><a href="{{ route('homepage') }}">Anasayfa</a></li>
+        <li><a href="#">Kategori</a></li>
+        <li>Pro Name</li>
     </ol><!--Breadcrumbs Close-->
 
     <!--Shopping Cart Message-->
-    <section class="cart-message">
+    <section class="cart-message {{-- visible --}}">
         <i class="fa fa-check-square"></i>
-        <p class="p-style3">"Nikon" was successfully added to your cart.</p>
-        <a class="btn-outlined-invert btn-success btn-sm" href="shopping-cart.html">View cart</a>
+        <p class="p-style3">Ürün sepetinize eklenmiştir.</p>
+        <a class="btn-outlined-invert btn-success btn-sm" href="shopping-cart.html">Sepete Git!</a>
     </section><!--Shopping Cart Message Close-->
 
     <!--Catalog Single Item-->
@@ -123,8 +126,7 @@
                                         <div class="item">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-3"><i class="icon-expand"></i><span>Fit</span></div>
-                                                <div class="col-lg-8 col-md-8 col-sm-9"><p class="p-style2">Adjustable nosepads and durable frame fits any face.
-                                                        Extra nosepads in two sizes.</p></div>
+                                                <div class="col-lg-8 col-md-8 col-sm-9"><p class="p-style2">Adjustable nosepads and durable frame fits any face. Extra nosepads in two sizes.</p></div>
                                             </div>
                                         </div>
                                         <!--Item-->
@@ -169,8 +171,7 @@
                                         <div class="item">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-4"><i class="icon-expand"></i><span>Fit</span></div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8"><p class="p-style2">Adjustable nosepads and durable frame fits any face.
-                                                        Extra nosepads in two sizes.</p></div>
+                                                <div class="col-lg-8 col-md-8 col-sm-8"><p class="p-style2">Adjustable nosepads and durable frame fits any face. Extra nosepads in two sizes.</p></div>
                                             </div>
                                         </div>
                                         <!--Item-->
@@ -315,5 +316,6 @@
             </div>
         </div>
     </section><!--Special Offer Close-->
-
+    @include('front.layouts.partials.cozumortaklari')
 </div><!--Page Content Close-->
+@stop

@@ -20,6 +20,6 @@ class ProductController extends FrontController
 
     public function productDetail($productName, $productID)
     {
-    	return $productName . ' : ' . $productID ;
+    	return view('front.product.productDetail');
     }
 }
