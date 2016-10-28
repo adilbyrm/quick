@@ -31,11 +31,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'RememberToken',
+        'Password', 'RememberToken',
     ];
 
     public function getRememberTokenName()
     {
         return 'RememberToken';
+    }
+
+    public function getUserNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setUserNameAttribute($value)
+    {
+        $this->attributes['UserName'] = ucwords($value);
     }
 }
