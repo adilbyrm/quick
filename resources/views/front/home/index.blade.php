@@ -51,40 +51,14 @@
                     </a>
                 </div>
                 <!--Category-->
+                @foreach($productGroups as $gr)
                 <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
                     <a href="#">
-                        <img src="img/categories/2.jpg" alt="2"/>
-                        <p>Category name</p>
+                        <img src="data:image/jpeg;base64,{{ base64_encode($gr->Picture) }}" alt="2"/>
+                        <p>{{ $gr->Name }}</p>
                     </a>
                 </div>
-                <!--Category-->
-                <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <img src="img/categories/3.jpg" alt="3"/>
-                        <p>Category name</p>
-                    </a>
-                </div>
-                <!--Category-->
-                <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <img src="img/categories/4.jpg" alt="4"/>
-                        <p>Category name</p>
-                    </a>
-                </div>
-                <!--Category-->
-                <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <img src="img/categories/5.jpg" alt="5"/>
-                        <p>Category name</p>
-                    </a>
-                </div>
-                <!--Category-->
-                <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <img src="img/categories/6.jpg" alt="5"/>
-                        <p>Category name</p>
-                    </a>
-                </div>
+               @endforeach 
             </div>
         </div>
     </section><!--Categories Close-->

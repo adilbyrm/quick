@@ -71,5 +71,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('{productName}/{productID}', ['as' => 'product-detail', 'uses' => 'ProductController@productDetail']);
 
 
-
+	// Route::get('category/image/{id}', ['as' => 'image', 'uses' => 'HomeController@image']);
 });

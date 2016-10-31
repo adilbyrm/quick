@@ -14,7 +14,7 @@ class FrontController extends Controller
 {
     public function __construct()
     {
-
+        
     	Cache::remember('trademarks', 1, function() {
 	    	return DB::table('Trademarks')->limit(5)->get();
     	});

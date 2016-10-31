@@ -24,4 +24,10 @@ class HomeController extends FrontController
     	$productHtml = view('front.layouts.partials.singleProduct')->with('products', $products);
     	return view('front.home.index')->with('productHtml', $productHtml);
     }
+
+    // public function image($id)
+    // {
+    //     $value = DB::table('StockGroups')->where('ID', $id)->first();
+    //     return response()->view('front.image', ['value' => $value])->header('Content-Type', 'image/jpeg');
+    // }
 }
