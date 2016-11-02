@@ -49,8 +49,8 @@
             title: "",
             text: "{{ session()->get('failure') }}",
             type: "error",
-            confirmButtonText: "Tamam",
-            html: true
+            showConfirmButton: false,
+            timer: 2000
         })
     </script>
 @endif
@@ -60,8 +60,8 @@
             title: "",
             text: "{{ session()->get('success') }}",
             type: "success",
-            confirmButtonText: "Tamam",
-            html: true
+            showConfirmButton: false,
+            timer: 2000
         })
     </script>
 @endif

@@ -20,6 +20,7 @@ class HomeController extends FrontController
 					->select('S.ID AS stockID', 'S.Name AS stockName', 'T.Name AS trademarkName', 'SP.Price')
                     ->leftJoin('StockCardSellPrices AS SP', 'S.ID', '=', 'SP.StockID')
     				->leftJoin('Trademarks AS T', 'T.ID', '=', 'S.TrademarkID')
+                    ->whereRaw('SP.ID = S.SellPriceID')
     				->limit(12)->get();
     	$productHtml = view('front.layouts.partials.singleProduct')->with('products', $products);
     	return view('front.home.index')->with('productHtml', $productHtml);

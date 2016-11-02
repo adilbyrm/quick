@@ -54,7 +54,7 @@
                 @foreach($productGroups as $gr)
                 <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
                     <a href="#">
-                        <img src="data:image/jpeg;base64,{{ base64_encode($gr->Picture) }}" alt="2"/>
+                        <img src="data:image/jpeg;base64,{{ base64_encode($gr->Picture) }}" alt="{{ $gr->Name }}"/>
                         <p>{{ $gr->Name }}</p>
                     </a>
                 </div>

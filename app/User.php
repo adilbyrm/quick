@@ -39,13 +39,19 @@ class User extends Authenticatable
         return 'RememberToken';
     }
 
+    /**
+     * accessor for the UserName field
+     */
     public function getUserNameAttribute($value)
     {
-        return ucwords($value);
+        // return ucwords($value);
     }
 
+    /**
+     * mutator the UserName field
+     */
     public function setUserNameAttribute($value)
     {
-        $this->attributes['UserName'] = ucwords($value);
+        // $this->attributes['UserName'] = ucwords($value);
     }
 }

@@ -58,6 +58,7 @@ class Cart extends Model
                     ->select('Carts.RowID AS cartID', 'Carts.ProductID', 'Carts.ProductCount', 'StockCards.Name', 'StockCardSellPrices.Price')
                     ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.ID')
                     ->leftJoin('StockCardSellPrices', 'Carts.ProductID', '=', 'StockCardSellPrices.StockID')
+                    ->whereRaw('StockCardSellPrices.ID = StockCards.SellPriceID')
                     ->get();
     }
 
