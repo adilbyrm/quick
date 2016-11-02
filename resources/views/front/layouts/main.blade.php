@@ -50,7 +50,8 @@
             text: "{{ session()->get('failure') }}",
             type: "error",
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
+            html: true
         })
     </script>
 @endif
@@ -61,7 +62,8 @@
             text: "{{ session()->get('success') }}",
             type: "success",
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
+            html: true
         })
     </script>
 @endif
@@ -333,7 +335,8 @@
                     text: resp.message,
                     type: resp.type,
                     showConfirmButton: false,
-                    timer: 2000
+                    timer: 2000,
+                    html: true
                 })
             }
         }).fail(function(xhr, status, error) {
@@ -344,7 +347,8 @@
                 type: "error",
                 // confirmButtonText: "Tamam",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
+                html: true
             })
         })
     }
