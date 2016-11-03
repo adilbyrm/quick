@@ -1,28 +1,32 @@
 @foreach($products as $pro)
 <div class="col-lg-3 col-md-4 col-sm-6">
     <div class="tile">
-        <div class="badges">
+        {{-- <div class="badges">
             <span class="sale"></span>
-        </div>
-        <div class="price-label">{{ nf($pro->Price) }} <small>TL</small></div>
-        <a href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}"><img src="img/catalog/tiles/1.jpg" alt="1"/></a>
+        </div> --}}
+        @if( auth()->check() )
+        <div class="price-label">{{ nf( \App\StockCardSellPrice::getSellPrice($pro->stockID, $pro->defaultSellPriceID) ) }} <small>TL</small></div>
+        @endif
+        <a class="img-a" href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}">
+            <img src="data:image/*;base64,{{ base64_encode($pro->stockMainPicture) }}" alt="{{ $pro->stockName }}"/>
+        </a>
         <div class="footer">
             <a href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}">{{ $pro->stockName }}</a>
             <span>{{ $pro->trademarkName }}</span>
             <div class="tools">
-                <div class="rate">
+                {{-- <div class="rate">
                     <span class="active"></span>
                     <span class="active"></span>
                     <span class="active"></span>
                     <span></span>
                     <span></span>
-                </div>
+                </div> --}}
                 <!--Add To Cart Button-->
-                {{-- @if(auth()->check()) --}}
+                @if(auth()->check())
                 <a class="add-cart-btn" href="javascript:;" onclick="addToCart(this, '{{ $pro->stockID }}')"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
-                {{-- @endif --}}
+                @endif
                 <!--Share Button-->
-                <div class="share-btn">
+                <div class="share-btn" style="{{ !auth()->check() ? 'right: 0' : '' }}" >
                     <div class="hover-state">
                         <a class="fa fa-facebook-square" href="#"></a>
                         <a class="fa fa-twitter-square" href="#"></a>
@@ -40,3 +44,9 @@
     </div>
 </div>
 @endforeach
+<style type="text/css">
+    .tile > .img-a { height:285px ; display:flex; }
+    .tile > a > img { max-height:285px; }
+    .tile > .footer { height:162px; }
+    .tile .footer .tools { position: absolute!important; margin-top: 0!important; bottom:10px!important; right:10px!important; }
+</style>

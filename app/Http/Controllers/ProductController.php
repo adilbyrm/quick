@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\StockCard;
 
 class ProductController extends FrontController
 {
@@ -20,6 +21,9 @@ class ProductController extends FrontController
 
     public function productDetail($productName, $productID)
     {
-    	return view('front.product.productDetail');
+        $stockCard = StockCard::getStockCard($productID);
+        if(!$stockCard)
+            return redirect()->route('homepage');
+    	return view('front.product.productDetail')->with('stockCard', $stockCard);
     }
 }

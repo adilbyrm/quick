@@ -38,19 +38,19 @@
         </div>
     </section><!--Hero Slider Close-->
 
-    <!--Categories-->
+    <!--
     <section class="cat-tiles">
         <div class="container">
             {{-- <h2>Browse categories</h2> --}}
             <div class="row">
-                <!--Category-->
+               
                 <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
                     <a href="#">
                         <img src="img/categories/1.jpg" alt="1"/>
                         <p>Category name</p>
                     </a>
                 </div>
-                <!--Category-->
+                
                 @foreach($productGroups as $gr)
                 <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
                     <a href="#">
@@ -61,7 +61,7 @@
                @endforeach 
             </div>
         </div>
-    </section><!--Categories Close-->
+    </section>-->
 
     <!--Catalog Grid-->
     <section class="catalog-grid">

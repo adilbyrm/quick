@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('homepage') }}">Anasayfa</a></li>
         <li><a href="#">Kategori</a></li>
-        <li>Pro Name</li>
+        <li>{{ $stockCard->stockName }}</li>
     </ol><!--Breadcrumbs Close-->
 
     <!--Shopping Cart Message-->
@@ -29,7 +29,7 @@
                         <!--Slide1-->
                         <div class="ms-slide">
                             <img src="../masterslider/blank.gif" data-src="img/catalog/product-gallery/1.jpg" alt="Lorem ipsum"/>
-                            <img class="ms-thumb" src="img/catalog/product-gallery/th_1.jpg" alt="thumb" />
+                            <img class="ms-thumb" src="data:image/*;base64,{{ base64_encode($stockCard->stockMainPicture) }}" />
                         </div>
                         <!--Slide2-->
                         <div class="ms-slide">

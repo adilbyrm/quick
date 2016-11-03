@@ -3,10 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use DB;
-
 use Log;
+use App\StockCardSellPrice;
 
 class Cart extends Model
 {
@@ -54,12 +53,17 @@ class Cart extends Model
      */
     public function getAllCarts()
     {
-        return $this->carts()
-                    ->select('Carts.RowID AS cartID', 'Carts.ProductID', 'Carts.ProductCount', 'StockCards.Name', 'StockCardSellPrices.Price')
+        $xs = $this->carts()
+                    ->select('Carts.RowID AS cartID', 'Carts.ProductID', 'Carts.ProductCount', 'StockCards.SellPriceID AS defaultSellPriceID', 'StockCards.Name AS stockName', 'StockCards.Picture AS stockMainPicture')
                     ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.ID')
-                    ->leftJoin('StockCardSellPrices', 'Carts.ProductID', '=', 'StockCardSellPrices.StockID')
-                    ->whereRaw('StockCardSellPrices.ID = StockCards.SellPriceID')
                     ->get();
+        $arr = [];
+        foreach($xs as $x) {
+            $price = StockCardSellPrice::getSellPrice($x->ProductID, $x->defaultSellPriceID);
+            $x['price'] = $price;
+            $arr[] = $x;
+        }
+        return $arr;
     }
 
     /**
@@ -132,7 +136,7 @@ class Cart extends Model
     {
         $total = 0;
         foreach($this->getAllCarts() as $cart) {
-            $total += $cart->Price * $cart->ProductCount;
+            $total += $cart->price * $cart->ProductCount;
         }
         return $total;
     }

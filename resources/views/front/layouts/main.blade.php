@@ -323,7 +323,7 @@
             method: "POST",
             data: {prodcutID: prodcutID},
             beforeSend: function() {
-                $(elem).addClass('href-disabled')
+                $(elem).addClass('href-disabled');
             },
             complete: function() {
                 $(elem).removeClass('href-disabled');

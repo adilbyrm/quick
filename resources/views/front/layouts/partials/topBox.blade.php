@@ -15,9 +15,9 @@
                     </tr>
                     @foreach($carts as $cart)
                     <tr class="item">
-                        <td><div onclick="deleteTheCart(this)" class="delete" data-id="{{ $cart->cartID }}"></div><a href="#{{ $cart->ProductID }}">{{ $cart->Name }}</a></td>
+                        <td><div onclick="deleteTheCart(this)" class="delete" data-id="{{ $cart->cartID }}"></div><a href="#{{ $cart->ProductID }}">{{ $cart->stockName }}</a></td>
                         <td><input type="text" value="{{ $cart->ProductCount }}"></td>
-                        <td class="price">{{ nf($cart->Price) }} TL</td>
+                        <td class="price">{{ nf($cart->price) }} TL</td>
                     </tr>
                     @endforeach
                 </table>
