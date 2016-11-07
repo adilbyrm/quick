@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\StockCardSellPrice;
 
 class StockCard extends Model
 {
@@ -17,9 +18,12 @@ class StockCard extends Model
 
     public static function getStockCard($stockID)
     {
-    	return static::select('SC.ID AS stockID', 'SC.Name AS stockName', 'SC.SellPriceID AS defaultSellPriceID', 'SC.Explanation', 'SC.Picture AS stockMainPicture', 'T.Name AS trademarkName')
+    	$stock = static::select('SC.ID AS stockID', 'SC.Name AS stockName', 'SC.SellPriceID AS defaultSellPriceID', 'SC.Explanation', 'SC.Picture AS stockMainPicture', 'T.Name AS trademarkName')
 					->leftJoin('Trademarks AS T', 'T.ID', '=', 'SC.TrademarkID')
 					->where('SC.ID', $stockID)
 					->first();
+    	$stock['price'] = StockCardSellPrice::getSellPrice($stockID, $stock->defaultSellPriceID);
+
+    	return $stock;
     }
 }

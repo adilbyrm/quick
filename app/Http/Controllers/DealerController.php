@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Session;
 use DB;
 use Auth;
+use App\User;
 
 class DealerController extends FrontController
 {
@@ -24,7 +25,7 @@ class DealerController extends FrontController
 
     public function loginP(Request $request)
     {
-    	$user = DB::table('Accounts')->where('username', $request->log_email)->where('password', $request->log_password)->first();
+    	$user = User::where('username', $request->log_email)->where('password', $request->log_password)->first();
     	if($user) {
     		Auth::guard('user')->loginUsingId($user->RowID, true); 
     		return redirect()->intended(session()->get('_previous.url'));

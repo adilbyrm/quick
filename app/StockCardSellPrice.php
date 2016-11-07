@@ -9,6 +9,13 @@ class StockCardSellPrice extends Model
 
 	protected $table = 'StockCardSellPrices';
 
+	/**
+	 * $stockCardID = $stockCard->ID
+	 * $defaultSellPriceID = $stockCard->SellPriceID
+	 * Her urunun 1den fazla fiyati var(StockCardSellPrices) ve her urunun default fiyati var($stockCard->SellPriceID)
+	 * Her cari'ye atanmis urun fiyati var($account->SellPriceIndex) (StockCardSellPrices->ID = $account->SellPriceIndex)
+	 * eger cari'ye atanmis fiyat alani fiyatlar tablosunda bulunamazsa urune atanan default fiyat return edilir.
+	 */
     public static function getSellPrice($stockCardID, $defaultSellPriceID = 1)
     {
     	$sellPrices = static::select('Price')->where('StockID', $stockCardID);

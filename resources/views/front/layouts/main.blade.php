@@ -14,6 +14,9 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link href="css-loader.css" rel="stylesheet" media="screen">
+
     <!--Master Slider Styles-->
     <link href="masterslider/style/masterslider.css" rel="stylesheet" media="screen">
     <!--Styles-->
@@ -42,29 +45,15 @@
 
 <!--Body-->
 <body>
-
+<div id="loader" class="loader loader-default" half></div>
 @if(session()->has('failure'))
     <script>
-        swal({
-            title: "",
-            text: "{{ session()->get('failure') }}",
-            type: "error",
-            showConfirmButton: false,
-            timer: 2000,
-            html: true
-        })
+        swal({ title: "", text: "{{ session()->get('failure') }}", type: "error" })
     </script>
 @endif
 @if(session()->has('success'))
     <script>
-        swal({
-            title: "",
-            text: "{{ session()->get('success') }}",
-            type: "success",
-            showConfirmButton: false,
-            timer: 2000,
-            html: true
-        })
+        swal({ title: "", text: "{{ session()->get('success') }}", type: "success" })
     </script>
 @endif
 
@@ -324,33 +313,29 @@
             data: {prodcutID: prodcutID},
             beforeSend: function() {
                 $(elem).addClass('href-disabled');
+                $('#loader').addClass('is-active');
             },
             complete: function() {
                 $(elem).removeClass('href-disabled');
+                $('#loader').removeClass('is-active');
                 getTopBox();
             },
             success: function(resp) {
                 swal({
                     title: "",
                     text: resp.message,
-                    type: resp.type,
-                    showConfirmButton: false,
-                    timer: 2000,
-                    html: true
+                    type: resp.type
+                })
+            },
+            error: function(xhr, status, error) {
+                swal({
+                    title: "",
+                    // text: xhr.responseText,
+                    text: "İşlem gerçekleşmedi",
+                    type: "error"
                 })
             }
-        }).fail(function(xhr, status, error) {
-            swal({
-                title: "",
-                // text: xhr.responseText,
-                text: "İşlem gerçekleşmedi",
-                type: "error",
-                // confirmButtonText: "Tamam",
-                showConfirmButton: false,
-                timer: 2000,
-                html: true
-            })
-        })
+        });
     }
     // /single product add
 

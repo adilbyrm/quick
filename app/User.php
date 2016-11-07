@@ -17,7 +17,7 @@ class User extends Authenticatable
 
     const UPDATED_AT = 'RowEditDateTime';
 
-    protected $table = 'Accounts';
+    protected $table = 'CurrentAccounts';
 
     protected $primaryKey = 'RowID';
 
