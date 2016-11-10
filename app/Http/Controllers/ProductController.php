@@ -22,8 +22,9 @@ class ProductController extends FrontController
     public function productDetail($productName, $productID)
     {
         $stockCard = StockCard::getStockCard($productID);
-        if(!$stockCard)
+        if (! $stockCard) {
             return redirect()->route('homepage');
+        }
     	return view('front.product.productDetail')->with('stockCard', $stockCard);
     }
 }

@@ -88,6 +88,16 @@ return [
             'prefix'   => '',
         ],
 
+        'DBProjectDesignerUser' => [
+            'driver'   => 'sqlsrv',
+            'host'     => env('DB_HOST2', 'localhost'),
+            'database' => env('DB_DATABASE2', 'forge'),
+            'username' => env('DB_USERNAME2', 'forge'),
+            'password' => env('DB_PASSWORD2', ''),
+            'charset'  => 'utf8',
+            'prefix'   => '',
+        ],
+
     ],
 
     /*

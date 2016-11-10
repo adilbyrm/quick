@@ -20,14 +20,14 @@
         <li class="has-submenu" style="background-color:#2ba8db"><a href="shop-filters-left-3cols.html">Markalar<i class="fa fa-chevron-down"></i></a>
             <ul class="submenu" style="width:auto">
             @foreach($trademarks as $trademark)
-                <li><a href="{{ route('products-of-trademark', $trademark->ID) }}">{{ $trademark->Name }}</a></li>
+                <li><a href="{{ route('products.of.trademark', $trademark->ID) }}">{{ $trademark->Name }}</a></li>
             @endforeach
             </ul>
         </li>
 
         @foreach($productGroups as $key => $productGroup)
             @if($key < 4)
-                <li><a href="{{ route('products-of-category', $productGroup->ID) }}">{{ $productGroup->Name }}</a></li>
+                <li><a href="{{ route('products.of.category', $productGroup->ID) }}">{{ $productGroup->Name }}</a></li>
             @else
                 @break {{-- butun dizinin donguye girmemesi icin else --}} 
             @endif
@@ -37,7 +37,7 @@
             <ul class="submenu" style="width:auto">
             @foreach($productGroups as $key => $productGroup)
                 @if($key > 3)
-                    <li><a href="{{ route('products-of-category', $productGroup->ID) }}">{{ $productGroup->Name }}</a></li>
+                    <li><a href="{{ route('products.of.category', $productGroup->ID) }}">{{ $productGroup->Name }}</a></li>
                 @endif
             @endforeach
             </ul>

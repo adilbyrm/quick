@@ -16,10 +16,12 @@ class HomeController extends FrontController
 
     public function homepage()
     {
+        // dd( (new \App\Currency)->all() );
     	$products = \App\StockCard::getStockCards();
-    	$productHtml = view('front.layouts.partials.singleProduct')->with('products', $products);
-    	return view('front.home.index')->with('productHtml', $productHtml);
 
+    	$productHtml = view('front.layouts.partials.singleProduct')->with('products', $products);
+
+    	return view('front.home.index')->with('productHtml', $productHtml);
     }
 
     // public function image($id)

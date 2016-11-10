@@ -22,27 +22,40 @@ class Cart extends Model
         'RowID'
     ];
     
+    /**
+     * 
+     */
     public function sessionID()
     {
         return session()->getId();
     }
 
+    /**
+     * 
+     */
     public function accountID()
     {
-        if( auth()->guard('user')->check() ) {
+        if ( auth()->guard('user')->check() ) {
             return auth()->guard('user')->user()->ID;
         }
+
         return 0;
     }
 
+    /**
+     * 
+     */
     public function employeeID()
     {
-        // if( auth()->guard('employee')->check() ) {
+        // if ( auth()->guard('employee')->check() ) {
         //     return auth()->guard('employee')->user()->ID;
         // }
         return 0;
     }
 
+    /**
+     * 
+     */
     public function carts()
     {
         return Cart::where('AccountID', $this->accountID())->where('orderID', 0);
@@ -54,13 +67,24 @@ class Cart extends Model
     public function getAllCarts()
     {
         $xs = $this->carts()
-                    ->select('Carts.RowID AS cartID', 'Carts.ProductID', 'Carts.ProductCount', 'StockCards.SellPriceID AS defaultSellPriceID', 'StockCards.Name AS stockName', 'StockCards.Picture AS stockMainPicture')
+                    ->select(
+                        'Carts.RowID AS cartID',
+                        'Carts.ProductID',
+                        'Carts.ProductCount',
+                        'StockCards.SellPriceID AS defaultSellPriceID',
+                        'StockCards.Name AS stockName',
+                        'StockCards.VAT AS stockVat',
+                        'StockCards.Picture AS stockMainPicture'
+                    )
                     ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.ID')
                     ->get();
         $arr = [];
+
         foreach($xs as $x) {
             $price = StockCardSellPrice::getSellPrice($x->ProductID, $x->defaultSellPriceID);
+
             $x['price'] = $price;
+
             $arr[] = $x;
         }
         return $arr;
@@ -69,29 +93,33 @@ class Cart extends Model
     /**
      * AJAX - CartController
      */
-    public function addToCart($productID)
+    public function addToCart($productID, $quantity)
     {
     	$cart = $this->carts()->where('ProductID', $productID)->first();
-        if($cart) {
-            $cart->ProductCount += 1;
+        if ($cart) {
+            $cart->ProductCount += $quantity;
             $cart->SessionID = $this->sessionID();
-            if($cart->save()) {
-                Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; 1 adet artırıldı.');
+
+            if ($cart->save()) {
+                Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; '. $quantity .' adet artırıldı.');
                 return true;
             }
-            Log::error('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; 1 adet artırma işlemi gerçekleşmedi.');
+
+            Log::error('AccountID: '. $this->accountID() .', Cart.RowID: '. $cart->RowID .', ProductID: '. $productID .'; '. $quantity .' adet artırma işlemi gerçekleşmedi.');
             return false;
         } else {
             $ID = 1;
             $lastInsert = DB::table('Carts')->select('RowID')->orderBy('RowID', 'DESC')->first();
-            if($lastInsert) {
+
+            if ($lastInsert) {
                 $ID = $lastInsert->RowID + 1;
             }
+
             $create = Cart::create([
                 'ProductID' => $productID,
                 'AccountID' => $this->accountID(),
                 'EmployeeID' => $this->employeeID(),
-                'ProductCount' => 1,
+                'ProductCount' => $quantity,
                 'SessionID' => $this->sessionID(),
                 'RowEditUserNo' => $this->accountID(),
                 'RowAddUserNo' => $this->accountID(),
@@ -99,19 +127,26 @@ class Cart extends Model
                 'OrderID' => 0,
                 'ID' => $ID
             ]);
-            if($create) {
-                Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $create->RowID .', ProductID: '. $productID .'; yeni Cart oluşturuldu.');
+
+            if ($create) {
+                Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $create->RowID .', ProductID: '. $productID .'; '. $quantity .' adet Cart oluşturuldu.');
                 return true;
             }
-            Log::error('AccountID: '. $this->accountID() .', ProductID: '. $productID .'; yeni Cart oluşturulurken hata oluştu.');
+
+            Log::error('AccountID: '. $this->accountID() .', ProductID: '. $productID .'; '. $quantity .' adet Cart oluşturulurken hata oluştu.');
             return false;
         }
         return false;
     }
 
-    public function updateCart()
+    /**
+     * 
+     */
+    public function updateCart($carts)
     {
-    	
+    	foreach($carts as $cart) {
+            $this->carts()->where('RowID', $cart['id'])->update(['ProductCount' => $cart['quantity']]);
+        }
     }
 
     /**
@@ -123,21 +158,32 @@ class Cart extends Model
             Log::info('AccountID: '. $this->accountID() .', Cart.RowID: '. $cartID .'; cart silindi.');
             return true;
         }
+
         Log::error('AccountID: '. $this->accountID() .', Cart.RowID: '. $cartID .'; cart silinemedi.');
         return false;
     }
 
+    /**
+     * 
+     */
     public function trancateCart()
     {
     	
     }
 
+    /**
+     * 
+     */
     public function totalCart()
     {
         $total = 0;
+        $totalVat = 0; 
+        
         foreach($this->getAllCarts() as $cart) {
             $total += $cart->price * $cart->ProductCount;
+            $totalVat += ($cart->price * ($cart->stockVat/100)) * $cart->ProductCount;
         }
-        return $total;
+
+        return ['total' => $total, 'totalVat' => $totalVat];
     }
 }

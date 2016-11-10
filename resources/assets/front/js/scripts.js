@@ -125,36 +125,36 @@ $(document).ready(function(e) {
 	/*Shopping Cart Dropdown 
 	*******************************************/
 	//Deleting Items
-	$(document).on('click', '.cart-dropdown .delete', function(){
-		var $target = $(this).parent().parent();
-		var $positions = $('.cart-dropdown .item');
-		var $positionQty = parseInt($('.cart-btn a span').text());
-		$target.hide(300, function(){
-			$.when($target.remove()).then( function(){
-				$positionQty = $positionQty -1;
-				$('.cart-btn a span').text($positionQty);
-				if($positions.length === 1) {
-					$('.cart-dropdown .body').html('<h3>Cart is empty!</h3>');
-				}
-			});
-		});
-	});
+	// $(document).on('click', '.cart-dropdown .delete', function(){
+	// 	var $target = $(this).parent().parent();
+	// 	var $positions = $('.cart-dropdown .item');
+	// 	var $positionQty = parseInt($('.cart-btn a span').text());
+	// 	$target.hide(300, function(){
+	// 		$.when($target.remove()).then( function(){
+	// 			$positionQty = $positionQty -1;
+	// 			$('.cart-btn a span').text($positionQty);
+	// 			if($positions.length === 1) {
+	// 				$('.cart-dropdown .body').html('<h3>Cart is empty!</h3>');
+	// 			}
+	// 		});
+	// 	});
+	// });
 	
 	/*Shopping Cart Page
 	*******************************************/
 	//Deleting Items
-	$(document).on('click', '.shopping-cart .delete i', function(){
-		var $target = $(this).parent().parent();
-		var $positions = $('.shopping-cart .item');
-		$target.hide(300, function(){
-			$.when($target.remove()).then( function(){
-				if($positions.length === 1) {
-					$('.shopping-cart .items-list').remove();
-					$('.shopping-cart .title').text('Shopping cart is empty!');
-				}
-			});
-		});
-	});
+	// $(document).on('click', '.shopping-cart .delete i', function(){
+	// 	var $target = $(this).parent().parent();
+	// 	var $positions = $('.shopping-cart .item');
+	// 	$target.hide(300, function(){
+	// 		$.when($target.remove()).then( function(){
+	// 			if($positions.length === 1) {
+	// 				$('.shopping-cart .items-list').remove();
+	// 				$('.shopping-cart .title').text('Shopping cart is empty!');
+	// 			}
+	// 		});
+	// 	});
+	// });
 	
 	/*Wishlist Deleting Items
 	*******************************************/
@@ -490,21 +490,21 @@ $(document).ready(function(e) {
 	
 	/*Added To Cart Message + Action (For Demo Purpose)
 	**************************************************/
-	$addToCartBtn.click(function(){
-		$addedToCartMessage.removeClass('visible');
-		var $itemName = $(this).parent().parent().find('h1').text();
-		var $itemPrice = $(this).parent().parent().find('.price').text();
-		var $itemQnty = $(this).parent().find('#quantity').val();
-		var $cartTotalItems = parseInt($('.cart-btn a span').text()) +1;
-		$addedToCartMessage.find('p').text('"' + $itemName + '"' + '  ' + 'was successfully added to your cart.');
-		$('.cart-dropdown table').append(
-			'<tr class="item"><td><div class="delete"></div><a href="#">' + $itemName + 
-			'<td><input type="text" value="' + $itemQnty +
-			'"></td><td class="price">' + $itemPrice + '</td>' 
-		);
-		$('.cart-btn a span').text($cartTotalItems);
-		$addedToCartMessage.addClass('visible');
-	});
+	// $addToCartBtn.click(function(){
+	// 	$addedToCartMessage.removeClass('visible');
+	// 	var $itemName = $(this).parent().parent().find('h1').text();
+	// 	var $itemPrice = $(this).parent().parent().find('.price').text();
+	// 	var $itemQnty = $(this).parent().find('#quantity').val();
+	// 	var $cartTotalItems = parseInt($('.cart-btn a span').text()) +1;
+	// 	$addedToCartMessage.find('p').text('"' + $itemName + '"' + '  ' + 'was successfully added to your cart.');
+	// 	$('.cart-dropdown table').append(
+	// 		'<tr class="item"><td><div class="delete"></div><a href="#">' + $itemName + 
+	// 		'<td><input type="text" value="' + $itemQnty +
+	// 		'"></td><td class="price">' + $itemPrice + '</td>' 
+	// 	);
+	// 	$('.cart-btn a span').text($cartTotalItems);
+	// 	$addedToCartMessage.addClass('visible');
+	// });
 	
 	/*Promo Labels Popovers
 	*******************************************/

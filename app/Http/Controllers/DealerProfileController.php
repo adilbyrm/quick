@@ -17,7 +17,7 @@ class DealerProfileController extends FrontController
 
     public function profile()
     {
-    	return 'profile';
+    	return auth()->guard('user')->user()->UserName;
     }
 
     public function dealerRequest()

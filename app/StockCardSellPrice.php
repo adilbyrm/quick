@@ -20,8 +20,8 @@ class StockCardSellPrice extends Model
     {
     	$sellPrices = static::select('Price')->where('StockID', $stockCardID);
 
-		if( auth()->check() ) {
-			if( $sellPrices->count() >= auth()->guard('user')->user()->SellPriceIndex ) { // cari hesaba verilen default stocksellprice index'i stock satis fiyatlarinin icinde varsa (hesaba 3 indexi ayarlanir ve urunde 3 fiyat yoksa)
+		if ( auth()->check() ) {
+			if ( $sellPrices->count() >= auth()->guard('user')->user()->SellPriceIndex ) { // cari hesaba verilen default stocksellprice index'i stock satis fiyatlarinin icinde varsa (hesaba 3 indexi ayarlanir ve urunde 3 fiyat yoksa)
 			    $sellPrices->where("ID", auth()->guard('user')->user()->SellPriceIndex);
 			} else {
 				$sellPrices->where('ID', $defaultSellPriceID);

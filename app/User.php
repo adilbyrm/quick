@@ -42,16 +42,16 @@ class User extends Authenticatable
     /**
      * accessor for the UserName field
      */
-    public function getUserNameAttribute($value)
-    {
-        // return ucwords($value);
-    }
+    // public function getUserNameAttribute($value)
+    // {
+    //     return ucwords($value);
+    // }
 
     /**
      * mutator the UserName field
      */
-    public function setUserNameAttribute($value)
-    {
-        // $this->attributes['UserName'] = ucwords($value);
-    }
+    // public function setUserNameAttribute($value)
+    // {
+    //     $this->attributes['UserName'] = ucwords($value);
+    // }
 }

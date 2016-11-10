@@ -1,11 +1,11 @@
 
-<a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i><span>{{ count($carts) }}</span></a>
+<a class="btn btn-outlined-invert" href="{{ route('shopping.cart') }}"><i class="icon-shopping-cart-content"></i><span>{{ count($carts) }}</span></a>
 
 <!--Cart Dropdown-->
 <div class="cart-dropdown">
     <span></span><!--Small rectangle to overlap Cart button-->
     @if(auth()->check())
-        @if(count($carts))
+        @if (count($carts))
             <div class="body">
                 <table>
                     <tr>
@@ -15,8 +15,8 @@
                     </tr>
                     @foreach($carts as $cart)
                     <tr class="item">
-                        <td><div onclick="deleteTheCart(this)" class="delete" data-id="{{ $cart->cartID }}"></div><a href="#{{ $cart->ProductID }}">{{ $cart->stockName }}</a></td>
-                        <td><input type="text" value="{{ $cart->ProductCount }}"></td>
+                        <td><div onclick="deleteTheCart(this)" class="delete" data-id="{{ $cart->cartID }}"></div><a href="{{ route('product.detail', [slug($cart->stockName), $cart->ProductID]) }}">{{ $cart->stockName }}</a></td>
+                        <td>{{ $cart->ProductCount }}</td>
                         <td class="price">{{ nf($cart->price) }} TL</td>
                     </tr>
                     @endforeach
@@ -25,9 +25,9 @@
             <div class="footer group">
                 <div class="buttons">
                     <a class="btn btn-outlined-invert" href="checkout.html"><i class="icon-download"></i>Tamamla</a>
-                    <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i>Sepete Git</a>
+                    <a class="btn btn-outlined-invert" href="{{ route('shopping.cart') }}"><i class="icon-shopping-cart-content"></i>Sepete Git</a>
                 </div>
-                <div class="total">{{ nf(Cart::totalCart()) }} TL</div>
+                <div class="total">{{ nf( $total['total'] ) }} TL</div>
             </div>
         @else
             <div class="body">Sepetinizde henüz ürün bulunmamaktadır!</div>

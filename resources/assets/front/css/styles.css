@@ -1089,6 +1089,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  outline: none;
 }
 a {
   color: #2ba8db;

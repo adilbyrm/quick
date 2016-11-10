@@ -1,27 +1,16 @@
 @foreach($products as $pro)
 <div class="col-lg-3 col-md-4 col-sm-6">
     <div class="tile">
-        {{-- <div class="badges">
-            <span class="sale"></span>
-        </div> --}}
         @if( auth()->check() )
         <div class="price-label">{{ nf( \App\StockCardSellPrice::getSellPrice($pro->stockID, $pro->defaultSellPriceID) ) }} <small>TL</small></div>
         @endif
-        <a class="img-a" href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}">
+        <a class="img-a" href="{{ route('product.detail', [slug($pro->stockName), $pro->stockID]) }}">
             <img src="data:image/*;base64,{{ base64_encode($pro->stockMainPicture) }}" alt="{{ $pro->stockName }}"/>
         </a>
         <div class="footer">
-            <a href="{{ route('product-detail', [slug($pro->stockName), $pro->stockID]) }}">{{ $pro->stockName }}</a>
+            <a href="{{ route('product.detail', [slug($pro->stockName), $pro->stockID]) }}">{{ $pro->stockName }}</a>
             <span>{{ $pro->trademarkName }}</span>
             <div class="tools">
-                {{-- <div class="rate">
-                    <span class="active"></span>
-                    <span class="active"></span>
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
-                </div> --}}
-                <!--Add To Cart Button-->
                 @if(auth()->check())
                 <a class="add-cart-btn" href="javascript:;" onclick="addToCart(this, '{{ $pro->stockID }}')"><span>Ekle</span><i class="icon-shopping-cart"></i></a>
                 @endif
@@ -34,11 +23,6 @@
                     </div>
                     <i class="fa fa-share"></i>
                 </div>
-                <!--Add To Wishlist Button-->
-                {{-- <a class="wishlist-btn" href="#">
-                    <div class="hover-state">Wishlist</div>
-                    <i class="fa fa-plus"></i>
-                </a> --}}
             </div>
         </div>
     </div>

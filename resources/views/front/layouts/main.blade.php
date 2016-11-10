@@ -109,23 +109,6 @@
     <div class="container">
         <a class="logo" href="{{url('/')}}"><img src="img/logo.png" alt="Reis Elektronik A.Ş"/></a>
 
-        <!--Language / Currency Switchers-->
-        {{-- <ul class="switchers">
-            <li>$
-                <ul class="dropdown">
-                    <li><a href="#">&euro;</a></li>
-                    <li><a href="#">$</a></li>
-                </ul>
-            </li>
-            <li>En
-                <ul class="dropdown">
-                    <li><a href="#">En</a></li>
-                    <li><a href="#">Fr</a></li>
-                    <li><a href="#">Gr</a></li>
-                </ul>
-            </li>
-        </ul> --}}
-
         <!-- top menu -->
         @include('front.layouts.partials.topmenu')
 
@@ -307,10 +290,13 @@
 
     // single product add
     function addToCart(elem, prodcutID) {
+
+        var quantity = $('#quantity').val();
+        
         $.ajax({
             url: '{{ route("add-to-cart") }}',
             method: "POST",
-            data: {prodcutID: prodcutID},
+            data: {prodcutID: prodcutID, quantity: quantity},
             beforeSend: function() {
                 $(elem).addClass('href-disabled');
                 $('#loader').addClass('is-active');
@@ -337,25 +323,75 @@
             }
         });
     }
-    // /single product add
+    // ./single product add
 
     // get top menu box
     function getTopBox() {
-        $.post('{{ route("get-top-menu-box") }}', function(resp) {
+        $.post('/get-top-menu-box', function(resp) {
             $(".cart-btn").html(resp);
         })
     }
-    getTopBox();
-    // /get top menu box
+    if( $('body').find('.cart-btn').length ) {
+        getTopBox();
+    }
+    // ./get top menu box
 
     // one cart delete
     function deleteTheCart(elem) {
         var cartID = $(elem).data('id');
+        var isCartBtn = $('body').find('.cart-btn').length;
+        $(elem).parent().parent().fadeOut();
+
+        if(! isCartBtn) {
+            $('#loader').addClass('is-active');
+        }
+
         $.post('{{ route("delete-the-cart") }}', {cartID: cartID}, function(resp) {
-            getTopBox();
+            if( isCartBtn ) { // sepet sayfasında degilsek
+                getTopBox();
+            } else { // sepet sayfasında isek
+                allCart();
+                $('#loader').removeClass('is-active');  
+            }
         })
     }
-    // one cart delete
+    // ./one cart delete
+
+    // cart page - all cart - cart.blade
+    function allCart() {
+        $.post('/get-all-cart-xhr', function(resp) {
+            $("#all-cart").html(resp);
+        })
+    }
+    // ./cart page - all cart
+
+    // update cart - cart.blade
+    function updateCart() {
+        $('#loader').addClass('is-active');
+        var ID, quantity, carts = [];
+        $('input[name=quantity]').each(function() {
+            ID = $(this).data('id');
+            quantity = $(this).val();
+            carts.push({'id': ID, 'quantity': quantity});
+        })
+
+        $.ajax({
+            url: '/update-carts',
+            method: "POST",
+            data: {carts:carts},
+            success: function(resp) {
+                allCart(); 
+                $('#loader').removeClass('is-active');  
+                swal({
+                    title: "",
+                    text: resp.message,
+                    type: resp.type
+                })
+            }
+        })
+        return false;
+    }
+    // ./update cart
 </script>
 
 </body><!--Body Close-->

@@ -62,13 +62,19 @@ Route::group(['middleware' => ['web']], function () {
 	 * AJAX - top box - (function: main.blade)
 	 */
 	Route::post('delete-the-cart', ['as' => 'delete-the-cart', 'uses' => 'CartController@deleteTheCart']);
+
+	Route::get('shopping-cart', ['as' => 'shopping.cart', 'uses' => 'CartController@getCarts']);
+
+	Route::post('get-all-cart-xhr', ['as' => 'get.all.cart.xhr', 'uses' => 'CartController@getCartsXHR']);
+
+	Route::post('update-carts', ['as' => 'update.carts', 'uses' => 'CartController@updateCartsXHR']);
 	################ /Cart ################
 
-	Route::get('trademark/{trademarkID}/products', ['as' => 'products-of-trademark', 'uses' => 'ProductController@productsOfTrademark']);
+	Route::get('trademark/{trademarkID}/products', ['as' => 'products.of.trademark', 'uses' => 'ProductController@productsOfTrademark']);
 
-	Route::get('category/{categoryID}/products', ['as' => 'products-of-category', 'uses' => 'ProductController@productsOfCategory']);
+	Route::get('category/{categoryID}/products', ['as' => 'products.of.category', 'uses' => 'ProductController@productsOfCategory']);
 
-	Route::get('{productName}/{productID}', ['as' => 'product-detail', 'uses' => 'ProductController@productDetail']);
+	Route::get('{productName}/{productID}', ['as' => 'product.detail', 'uses' => 'ProductController@productDetail']);
 
 
 	// Route::get('category/image/{id}', ['as' => 'image', 'uses' => 'HomeController@image']);
