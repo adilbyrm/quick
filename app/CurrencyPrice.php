@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class CurrencyPrice extends Model
 {
     protected $connection = 'DBProjectDesignerUser';
 
-    protected $table = 'Currencies';
+    protected $table = 'CurrencyPrices';
 
     protected $primaryKey = 'RowID';
 
@@ -20,8 +20,8 @@ class Currency extends Model
 
     const UPDATED_AT = 'RowEditDateTime';
 
-    public static function getCurrencyCode($currencyNo)
+    public static function getCurrencyPrices($currencyNo)
     {
-         return self::where('CurrencyNo', $currencyNo)->first();
+        return self::where('CurrencyNo', $currencyNo)->orderBy('PriceDateTime', 'DESC')->first();
     }
 }

@@ -17,7 +17,7 @@
                     <tr class="item">
                         <td><div onclick="deleteTheCart(this)" class="delete" data-id="{{ $cart->cartID }}"></div><a href="{{ route('product.detail', [slug($cart->stockName), $cart->ProductID]) }}">{{ $cart->stockName }}</a></td>
                         <td>{{ $cart->ProductCount }}</td>
-                        <td class="price">{{ nf($cart->price) }} TL</td>
+                        <td class="price">{{ nf($cart->price) }} {{ $cart->currencyCode }}</td>
                     </tr>
                     @endforeach
                 </table>

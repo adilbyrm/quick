@@ -9,6 +9,16 @@ class StockCardSellPrice extends Model
 
 	protected $table = 'StockCardSellPrices';
 
+	protected $sellPrices;
+
+	protected $sellPrice;
+
+	protected $currencyCode;
+
+	protected $currencyName;
+
+	protected $currencyPrice;
+
 	/**
 	 * $stockCardID = $stockCard->ID
 	 * $defaultSellPriceID = $stockCard->SellPriceID
@@ -16,9 +26,9 @@ class StockCardSellPrice extends Model
 	 * Her cari'ye atanmis urun fiyati var($account->SellPriceIndex) (StockCardSellPrices->ID = $account->SellPriceIndex)
 	 * eger cari'ye atanmis fiyat alani fiyatlar tablosunda bulunamazsa urune atanan default fiyat return edilir.
 	 */
-    public static function getSellPrice($stockCardID, $defaultSellPriceID = 1)
+    public function getSellPrice($stockCardID, $defaultSellPriceID = 1)
     {
-    	$sellPrices = static::select('Price')->where('StockID', $stockCardID);
+    	$sellPrices = self::select('Price', 'CurrencyNo')->where('StockID', $stockCardID);
 
 		if ( auth()->check() ) {
 			if ( $sellPrices->count() >= auth()->guard('user')->user()->SellPriceIndex ) { // cari hesaba verilen default stocksellprice index'i stock satis fiyatlarinin icinde varsa (hesaba 3 indexi ayarlanir ve urunde 3 fiyat yoksa)
@@ -30,8 +40,24 @@ class StockCardSellPrice extends Model
 		    $sellPrices->where('ID', $defaultSellPriceID);
 		}
 
-		$sellPrices = $sellPrices->first();
-		
-		return $sellPrices->Price;
+		$this->sellPrices = $sellPrices->first();
+    
+		return $this;
+    }
+
+    public function sellPrice()
+    {
+    	return $this->sellPrice = $this->sellPrices->Price;
+    }
+
+    public function currencyCode()
+    {
+    	return $this->currencyCode = Currency::getCurrencyCode($this->sellPrices->CurrencyNo)->CurrencyCode;
+    }
+
+    public function currencyPrice()
+    {
+    	$this->currencyPrice = CurrencyPrice::getCurrencyPrices($this->sellPrices->CurrencyNo)->BuyPrice;
+    	return $this->currencyPrice > 0 ? $this->currencyPrice : 1 ;
     }
 }

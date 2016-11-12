@@ -2,7 +2,7 @@
 <div class="col-lg-3 col-md-4 col-sm-6">
     <div class="tile">
         @if( auth()->check() )
-        <div class="price-label">{{ nf( \App\StockCardSellPrice::getSellPrice($pro->stockID, $pro->defaultSellPriceID) ) }} <small>TL</small></div>
+        <div class="price-label">{{ nf( $pro->price ) }} <small>{{ $pro->currencyCode }}</small></div>
         @endif
         <a class="img-a" href="{{ route('product.detail', [slug($pro->stockName), $pro->stockID]) }}">
             <img src="data:image/*;base64,{{ base64_encode($pro->stockMainPicture) }}" alt="{{ $pro->stockName }}"/>

@@ -19,13 +19,13 @@
                         <tr class="item first">
                             <td class="thumb"><a href="{{ route('product.detail', [slug($cart->stockName), $cart->ProductID]) }}"><img style="max-width:152px" src="data:image/*;base64,{{ base64_encode($cart->stockMainPicture) }}" alt="{{ $cart->stockName }}"/></a></td>
                             <td style="font-size:18px" class="name"><a href="{{ route('product.detail', [slug($cart->stockName), $cart->ProductID]) }}">{{ $cart->stockName }}</a></td>
-                            <td class="price">{{ nf($cart->price) }} TL</td>
+                            <td class="price">{{ nf( $cart->price ) }} <small>{{ $cart->currencyCode }}</small></td>
                             <td class="qnt-count">
                                 <a class="incr-btn" href="#">-</a>
                                 <input class="quantity form-control" type="text" name="quantity" data-id="{{ $cart->cartID }}" value="{{ $cart->ProductCount }}">
                                 <a class="incr-btn" href="#">+</a>
                             </td>
-                            <td class="total">{{ nf( $cart->price * $cart->ProductCount ) }} TL</td>
+                            <td class="total">{{ nf( $cart->price * $cart->ProductCount ) }} <small>{{ $cart->currencyCode }}</small></td>
                             <td class="delete"><i onclick="deleteTheCart(this)" class="icon-delete" data-id="{{ $cart->cartID }}"></i></td>
                         </tr>
                         @endforeach
@@ -89,3 +89,6 @@
         e.preventDefault();
     });
 </script>
+<style type="text/css">
+    small { font-size:14px; font-style: italic}
+</style>

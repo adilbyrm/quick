@@ -66,7 +66,7 @@ class Cart extends Model
      */
     public function getAllCarts()
     {
-        $xs = $this->carts()
+        $carts = $this->carts()
                     ->select(
                         'Carts.RowID AS cartID',
                         'Carts.ProductID',
@@ -80,12 +80,18 @@ class Cart extends Model
                     ->get();
         $arr = [];
 
-        foreach($xs as $x) {
-            $price = StockCardSellPrice::getSellPrice($x->ProductID, $x->defaultSellPriceID);
+        $stockCardSellPrice = new StockCardSellPrice;
 
-            $x['price'] = $price;
+        foreach($carts as $cart) {
+            $x = $stockCardSellPrice->getSellPrice($cart->ProductID, $cart->defaultSellPriceID);
 
-            $arr[] = $x;
+            $cart['price'] = $x->sellPrice();
+
+            $cart['currencyCode'] = $x->currencyCode();
+
+            $cart['currencyPrice'] = $x->currencyPrice();
+
+            $arr[] = $cart;
         }
         return $arr;
     }

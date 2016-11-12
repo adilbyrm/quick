@@ -14,9 +14,24 @@ class StockCard extends Model
      */
     public static function getStockCards($limit = 12)
     {
-    	return static::select('SC.ID AS stockID', 'SC.Name AS stockName', 'SC.SellPriceID AS defaultSellPriceID', 'SC.Picture AS stockMainPicture', 'T.Name AS trademarkName')
+    	$stocks = static::select('SC.ID AS stockID', 'SC.Name AS stockName', 'SC.SellPriceID AS defaultSellPriceID', 'SC.Picture AS stockMainPicture', 'T.Name AS trademarkName')
 					->leftJoin('Trademarks AS T', 'T.ID', '=', 'SC.TrademarkID')
 					->limit($limit)->get();
+
+        $arr = [];
+
+        $stockCardSellPrice = new StockCardSellPrice;
+
+        foreach($stocks as $stock) {
+            $x = $stockCardSellPrice->getSellPrice($stock->stockID, $stock->defaultSellPriceID);
+
+            $stock['price'] = $x->sellPrice();
+
+            $stock['currencyCode'] = $x->currencyCode();
+
+            $arr[] = $stock;
+        }
+        return $arr;
     }
 
     /**
@@ -32,7 +47,11 @@ class StockCard extends Model
         if (! $stock)
             return false;
 
-    	$stock['price'] = StockCardSellPrice::getSellPrice($stockID, $stock->defaultSellPriceID);
+        $stockCardSellPrice = new StockCardSellPrice;
+
+        $stock['price'] = $stockCardSellPrice->getSellPrice($stockID, $stock->defaultSellPriceID)->sellPrice();
+
+    	$stock['currencyCode'] = $stockCardSellPrice->getSellPrice($stockID, $stock->defaultSellPriceID)->currencyCode();
 
     	return $stock;
     }

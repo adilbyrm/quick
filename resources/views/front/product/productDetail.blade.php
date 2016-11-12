@@ -38,7 +38,7 @@
 
                     {{-- <div class="old-price">815,00 $</div> --}}
                     @if(auth()->check())
-                    <div class="price">{{ nf($stockCard->price) }} TL</div>
+                    <div class="price">{{ nf($stockCard->price) }} {{ $stockCard->currencyCode }}</div>
 
                     <div class="buttons group">
                         <div class="qnt-count">

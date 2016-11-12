@@ -39,19 +39,32 @@ class User extends Authenticatable
         return 'RememberToken';
     }
 
-    /**
-     * accessor for the UserName field
-     */
-    // public function getUserNameAttribute($value)
-    // {
-    //     return ucwords($value);
-    // }
+    protected $defaultBalanceCurrencyNo;
 
-    /**
-     * mutator the UserName field
-     */
-    // public function setUserNameAttribute($value)
-    // {
-    //     $this->attributes['UserName'] = ucwords($value);
-    // }
+    protected $balanceCurrencyCode;
+
+    protected $balanceCurrencyName;
+
+    protected $balanceCurrencyPrice;
+
+    public function defaultBalanceCurrencyNo()
+    {
+        $defaultCurrencyNo = auth()->guard('user')->user()->DefaultBalanceCurrencyNo;
+        if ($defaultCurrencyNo === 0) {
+            $defaultCurrencyNo = 1;
+        }
+        return $this->defaultBalanceCurrencyNo = $defaultCurrencyNo;
+    }
+
+    public function balanceCurrencyCode()
+    {
+        return $this->balanceCurrencyCode = Currency::getCurrencyCode($this->defaultBalanceCurrencyNo())->CurrencyCode;
+    }
+
+    public function balanceCurrnecyPrice()
+    {
+        $this->balanceCurrencyPrice = CurrencyPrice::getCurrencyPrices($this->defaultBalanceCurrencyNo())->BuyPrice;
+        return $this->balanceCurrencyPrice > 0 ? $this->balanceCurrencyPrice : 1 ;
+    }
+
 }
