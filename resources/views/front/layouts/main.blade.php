@@ -249,7 +249,6 @@
                         <img src="img/payment/discover.png" alt="Discover"/>
                         <img src="img/payment/amazon.png" alt="Amazon"/>
                     </div> --}}
-                    
                 </div>
             </div>
         </div>
