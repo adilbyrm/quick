@@ -45,19 +45,44 @@ class StockCardSellPrice extends Model
 		return $this;
     }
 
+    /**
+     * urunun satis fiyati
+     */
     public function sellPrice()
     {
     	return $this->sellPrice = $this->sellPrices->Price;
     }
 
+    public function currencyNo()
+    {
+        return $this->sellPrice = $this->sellPrices->CurrencyNo;
+    }
+
+    /**
+     * urunun doviz kodu(TL,USD...)
+     */
     public function currencyCode()
     {
     	return $this->currencyCode = Currency::getCurrencyCode($this->sellPrices->CurrencyNo)->CurrencyCode;
     }
 
+    /**
+     * urunun doviz kuru(kur fiyati)
+     */
     public function currencyPrice()
     {
     	$this->currencyPrice = CurrencyPrice::getCurrencyPrices($this->sellPrices->CurrencyNo)->BuyPrice;
     	return $this->currencyPrice > 0 ? $this->currencyPrice : 1 ;
     }
+
+    /**
+     * urunun doviz adi(turk lirasi, dolar...)
+     */
+    public function currencyName()
+    {
+    	return $this->currencyName = Currency::getCurrencyCode($this->sellPrices->CurrencyNo)->CurrencyName;
+    }
+
+
+
 }

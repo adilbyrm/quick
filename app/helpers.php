@@ -32,3 +32,7 @@ function getGUID(){
 function nf($price, $decimal = 2, $decimalPoint = ',', $separator = '.') {
     return number_format($price, $decimal, $decimalPoint, $separator);
 }
+
+function VAT($total, $ratio) {
+    return (100 * $total) / (100 + $ratio);
+}

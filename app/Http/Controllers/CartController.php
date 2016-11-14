@@ -51,9 +51,11 @@ class CartController extends FrontController
     		$carts = Cart::getAllCarts();
 
             $total = Cart::totalCart();
+
+            $balanceCurrencyCode = (new \App\User)->balanceCurrencyCode();            
     	}
 
-    	$html = view('front.layouts.partials.topBox')->with('carts', $carts)->with('total', $total);
+    	$html = view('front.layouts.partials.topBox', compact('carts', 'total', 'balanceCurrencyCode'));
 
     	return $html;
     }
@@ -84,7 +86,9 @@ class CartController extends FrontController
 
         $total = Cart::totalCart();
 
-        $html = view('front.cart.allCartsXHR')->with('carts', $carts)->with('total', $total);
+        $balanceCurrencyCode = (new \App\User)->balanceCurrencyCode();
+
+        $html = view('front.cart.allCartsXHR', compact('carts', 'total', 'balanceCurrencyCode'));
 
         return $html;
     }

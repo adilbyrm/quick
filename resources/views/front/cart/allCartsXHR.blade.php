@@ -35,24 +35,25 @@
                 <!--Sidebar-->
                 <div class="col-lg-3 col-md-3" style="background-color: #f9f9f9;">
                     <h3>Sepet Toplamları</h3>
-                    <form class="cart-sidebar" method="post">
+                    <form action="{{ route('create.sell.receipt') }}" class="cart-sidebar" method="post">
                         <div class="cart-totals">
                             <table>
                                 <tr>
                                     <td>KDV Hariç</td>
-                                    <td class="total align-r">{{ nf( $total['total'] - $total['totalVat'] ) }} TL</td>
+                                    <td class="total align-r">{{ nf( $total['totalWithoutVat'] ) }} {{ $balanceCurrencyCode }}</td>
                                 </tr>
                                 <tr class="devider">
                                     <td>KDV</td>
-                                    <td class="align-r">{{ nf( $total['totalVat'] ) }} TL</td>
+                                    <td class="align-r">{{ nf( $total['total'] - $total['totalWithoutVat'] ) }} {{ $balanceCurrencyCode }}</td>
                                 </tr>
                                 <tr>
                                     <td>Genel Toplam</td>
-                                    <td class="total align-r">{{ nf( $total['total'] ) }} TL</td>
+                                    <td class="total align-r">{{ nf( $total['total'] ) }} {{ $balanceCurrencyCode }}</td>
                                 </tr>
                             </table>
                             <a class="btn btn-primary btn-sm btn-block" href="javascript:;" id="update-cart" onclick="updateCart()">Sepeti Güncelle</a>
                             <input type="submit" class="btn btn-success btn-block" name="to-checkout" value="Siparişi Tamamla">
+                            {{ csrf_field() }}
                         </div>
                     </form>
                 </div>

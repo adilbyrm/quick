@@ -11,28 +11,28 @@
             <!--Slide 1-->
             <div class="ms-slide" data-delay="7">
                 <div class="overlay"></div>
-                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_1.jpg" alt="Nikon D4S"/>
-                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="top(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">Nikon D4S</h2>
-                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="back(500)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
-                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="bottom(50,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#"><span>1845$</span>Buy it now</a></div>
+                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_4.jpg" alt="Car Audio"/>
+                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="top(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">Car Audio</h2>
+                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="back(500)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Massive Car Audio</p>
+                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="bottom(50,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#">İncele</a></div>
             </div>
 
             <!--Slide 2-->
             <div class="ms-slide" data-delay="7">
                 <span class="overlay"></span>
-                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_2.jpg" alt="Nest"/>
-                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="bottom(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">Nest</h2>
-                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="bottom(50,true)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
-                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="rotatebottom(30|90,long,br,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#"><span>1640$</span>Buy it now</a></div>
+                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_5.jpg" alt="Car Speaker"/>
+                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="bottom(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">Car Speaker</h2>
+                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="bottom(50,true)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Soundmax Car Speaker</p>
+                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="rotatebottom(30|90,long,br,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#">İncele</a></div>
             </div>
 
             <!--Slide 3-->
             <div class="ms-slide" data-delay="7">
                 <div class="overlay"></div>
-                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_3.jpg" alt="3D Printer"/>
-                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="left(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">3D Printer</h2>
-                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="left(50,true)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
-                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="left(50,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#"><span>2500$</span>Buy it now</a></div>
+                <img src="masterslider/blank.gif" data-src="img/hero/slideshow/slide_6.jpg" alt="Android"/>
+                <h2 style="width: 456px; left: 110px; top: 110px;" class="light-color ms-layer" data-effect="left(50,true)" data-duration="700" data-delay="250" data-ease="easeOutQuad">Android</h2>
+                <p style="width: 456px; left: 110px; top: 210px;" class="light-color ms-layer" data-effect="left(50,true)" data-duration="700" data-delay="500" data-ease="easeOutQuad">Newfron OEM</p>
+                <div style="left: 110px; top: 300px;" class="ms-layer button" data-effect="left(50,true)" data-duration="600" data-delay="950" data-ease="easeOutQuad"><a class="btn btn-primary" href="#">İncele</a></div>
             </div>
 
         </div>
@@ -76,9 +76,8 @@
         </div>
     </section><!--Catalog Grid Close-->
 
-    <!--Tabs Widget-->
+<!--
     <section class="tabs-widget">
-        <!-- Nav tabs -->
         <ul class="nav nav-tabs">
             <li class="active"><a href="#bestsel" data-toggle="tab">Bestseller items</a></li>
             <li><a href="#onsale" data-toggle="tab">Items on sale</a></li>
@@ -189,9 +188,8 @@
                 </div>
             </div>
         </div>
-    </section><!--Tabs Widget Close-->
+    </section>
 
-    <!--Gallery Widget-->
     <section class="gray-bg gallery-widget">
         <div class="container">
             <h2>Product gallery</h2>
@@ -203,42 +201,36 @@
                 <a href="#" data-group="video">Video</a>
             </div>
             <div class="gallery-grid">
-                <!--Item-->
                 <div class="gallery-item" data-groups='["camera"]' data-src="img/gallery-widget/1.jpg">
                     <a href="img/gallery-widget/1.jpg">
                         <div class="overlay"><span><i class="icon-expand"></i></span></div>
                         <img src="img/gallery-widget/th_1.jpg" alt="1"/>
                     </a>
                 </div>
-                <!--Item-->
                 <div class="gallery-item" data-groups='["camera"]' data-src="img/gallery-widget/2.jpg">
                     <a href="img/gallery-widget/2.jpg">
                         <div class="overlay"><span><i class="icon-expand"></i></span></div>
                         <img src="img/gallery-widget/th_2.jpg" alt="2"/>
                     </a>
                 </div>
-                <!--Item-->
                 <div class="gallery-item" data-groups='["video"]' data-src="https://www.youtube.com/watch?v=hdEAWW7tZSA">
                     <a href="https://www.youtube.com/watch?v=hdEAWW7tZSA">
                         <div class="overlay"><span><i class="icon-music-play"></i></span></div>
                         <img src="img/gallery-widget/th_3.jpg" alt="3"/>
                     </a>
                 </div>
-                <!--Item-->
                 <div class="gallery-item" data-groups='["lenses"]' data-src="img/gallery-widget/4.jpg">
                     <a href="img/gallery-widget/4.jpg">
                         <div class="overlay"><span><i class="icon-expand"></i></span></div>
                         <img src="img/gallery-widget/th_4.jpg" alt="4"/>
                     </a>
                 </div>
-                <!--Item-->
                 <div class="gallery-item" data-groups='["flash"]' data-src="img/gallery-widget/5.jpg">
                     <a href="img/gallery-widget/5.jpg">
                         <div class="overlay"><span><i class="icon-expand"></i></span></div>
                         <img src="img/gallery-widget/th_5.jpg" alt="5"/>
                     </a>
                 </div>
-                <!--Item-->
                 <div class="gallery-item" data-groups='["flash"]' data-src="img/gallery-widget/6.jpg">
                     <a href="img/gallery-widget/6.jpg">
                         <div class="overlay"><span><i class="icon-expand"></i></span></div>
@@ -247,8 +239,8 @@
                 </div>
             </div>
         </div>
-    </section><!--Gallery Widget Close-->
-
+    </section>
+-->
     @include('front.layouts.partials.cozumortaklari')
 
 </div><!--Page Content Close-->

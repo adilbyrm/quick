@@ -27,7 +27,7 @@
                     <a class="btn btn-outlined-invert" href="checkout.html"><i class="icon-download"></i>Tamamla</a>
                     <a class="btn btn-outlined-invert" href="{{ route('shopping.cart') }}"><i class="icon-shopping-cart-content"></i>Sepete Git</a>
                 </div>
-                <div class="total">{{ nf( $total['total'] ) }} TL</div>
+                <div class="total">{{ nf( $total['total'] ) }} {{ $balanceCurrencyCode }}</div>
             </div>
         @else
             <div class="body">Sepetinizde henüz ürün bulunmamaktadır!</div>

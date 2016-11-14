@@ -61,10 +61,15 @@ class User extends Authenticatable
         return $this->balanceCurrencyCode = Currency::getCurrencyCode($this->defaultBalanceCurrencyNo())->CurrencyCode;
     }
 
-    public function balanceCurrnecyPrice()
+    public function balanceCurrencyPrice()
     {
         $this->balanceCurrencyPrice = CurrencyPrice::getCurrencyPrices($this->defaultBalanceCurrencyNo())->BuyPrice;
         return $this->balanceCurrencyPrice > 0 ? $this->balanceCurrencyPrice : 1 ;
+    }
+
+    public function balanceCurrencyName()
+    {
+        return $this->balanceCurrencyName = Currency::getCurrencyCode($this->defaultBalanceCurrencyNo())->CurrencyName;
     }
 
 }

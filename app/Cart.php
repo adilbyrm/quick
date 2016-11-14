@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Log;
-use App\StockCardSellPrice;
 
 class Cart extends Model
 {
@@ -96,6 +95,37 @@ class Cart extends Model
         return $arr;
     }
 
+    public function getSingleCart($cartID)
+    {
+        $cart = $this->carts()
+                    ->select(
+                        'Carts.RowID AS cartID',
+                        'Carts.ProductID',
+                        'Carts.ProductCount',
+                        'StockCards.SellPriceID AS defaultSellPriceID',
+                        'StockCards.Name AS stockName',
+                        'StockCards.Code AS stockCode',
+                        'StockCards.VAT AS stockVat'
+                    )
+                    ->leftJoin('StockCards', 'Carts.productID', '=', 'StockCards.ID')
+                    ->where('Carts.RowID', $cartID)
+                    ->first();
+
+        $stockCardSellPrice = new StockCardSellPrice;
+
+        $x = $stockCardSellPrice->getSellPrice($cart->ProductID, $cart->defaultSellPriceID);
+
+        $cart['price'] = $x->sellPrice();
+
+        $cart['currencyNo'] = $x->currencyNo();
+
+        $cart['currencyCode'] = $x->currencyCode();
+
+        $cart['currencyPrice'] = $x->currencyPrice();
+
+        return $cart;
+    }
+
     /**
      * AJAX - CartController
      */
@@ -183,13 +213,24 @@ class Cart extends Model
     public function totalCart()
     {
         $total = 0;
-        $totalVat = 0; 
-        
+        $totalWithoutVat = 0; 
+        $balanceCurrencyPrice = (new \App\User)->balanceCurrencyPrice();
+
         foreach($this->getAllCarts() as $cart) {
-            $total += $cart->price * $cart->ProductCount;
-            $totalVat += ($cart->price * ($cart->stockVat/100)) * $cart->ProductCount;
+            $price = ($cart->price * $cart->currencyPrice) / $balanceCurrencyPrice; // urune ait dovizden kullaniciya ait dovize cevir.
+            $total += $price * $cart->ProductCount;
+            $totalWithoutVat += VAT($price, $cart->stockVat) * $cart->ProductCount;
         }
 
-        return ['total' => $total, 'totalVat' => $totalVat];
+        return ['total' => $total, 'totalWithoutVat' => $totalWithoutVat];
+    }
+
+    public function totalAmount()
+    {
+        $amount = 0;
+        foreach($this->getAllCarts() as $cart) {
+            $amount += $cart->ProductCount;
+        }
+        return $amount;
     }
 }

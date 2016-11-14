@@ -76,6 +76,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('{productName}/{productID}', ['as' => 'product.detail', 'uses' => 'ProductController@productDetail']);
 
+	Route::post('create-sell-receipt', ['as' => 'create.sell.receipt', 'uses' => 'ReceiptController@createSellReceipt']);
 
 	// Route::get('category/image/{id}', ['as' => 'image', 'uses' => 'HomeController@image']);
 });
