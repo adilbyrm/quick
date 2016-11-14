@@ -52,7 +52,7 @@
                                 </tr>
                             </table>
                             <a class="btn btn-primary btn-sm btn-block" href="javascript:;" id="update-cart" onclick="updateCart()">Sepeti Güncelle</a>
-                            <input type="submit" class="btn btn-success btn-block" name="to-checkout" value="Siparişi Tamamla">
+                            <input type="submit" class="btn btn-success btn-block" onclick="loaderActive()" name="to-checkout" value="Siparişi Tamamla">
                             {{ csrf_field() }}
                         </div>
                     </form>

@@ -78,5 +78,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::post('create-sell-receipt', ['as' => 'create.sell.receipt', 'uses' => 'ReceiptController@createSellReceipt']);
 
+	Route::get('sales-display', ['as' => 'sales.display', 'uses' => 'SalesController@salesDisplay']);
+
 	// Route::get('category/image/{id}', ['as' => 'image', 'uses' => 'HomeController@image']);
 });

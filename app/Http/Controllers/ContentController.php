@@ -16,6 +16,6 @@ class ContentController extends FrontController
 
     public function contact()
     {
-    	return 'contact';
+    	return view('front.contents.contact');
     }
 }

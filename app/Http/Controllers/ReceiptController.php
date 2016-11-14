@@ -33,20 +33,23 @@ class ReceiptController extends FrontController
 
 		$name = Date('YmdHis') . uniqid();
 
-		$file = fopen( base_path("sell_receipts/SellReceipt_{$name}.xml"), "w+");
+		$file = @fopen( base_path("sell_receipts/SellReceipt_{$name}.xml"), "x");
 
-    	$xml = '<?xml version="1.0"?>' .
+		if ($file !== false) {
+			$xml = '<?xml version="1.0"?>' .
 					'<SellOrders>' .
 						$receipts .
 						$receiptStocks .
 					'</SellOrders>';
 
-		fwrite($file, $xml);
-		fclose($file);
-		
-		\Cart::carts()->update(['orderID' => $rowID]);
+			fwrite($file, $xml);
+			fclose($file);
+			
+			\Cart::carts()->update(['orderID' => $rowID]);
 
-		return redirect()->route('homepage')->with('success', 'Siparişiniz başarıyla oluşturulmuştur.');
+			return redirect()->route('homepage')->with('success', 'Siparişiniz başarıyla oluşturulmuştur.');
+		}
 
+		return back()->with('failure', 'Siparişiniz oluşturken sorun oluştu.');
 	}
 }
