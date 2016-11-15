@@ -47,6 +47,8 @@ class CartController extends FrontController
 
         $total = null;
 
+        $balanceCurrencyCode = null;
+
     	if (auth()->check()) {
     		$carts = Cart::getAllCarts();
 

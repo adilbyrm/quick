@@ -320,7 +320,7 @@
 
     // get top menu box
     function getTopBox() {
-        $.post('/get-top-menu-box', function(resp) {
+        $.post("{{ route('get-top-menu-box') }}", function(resp) {
             $(".cart-btn").html(resp);
         })
     }
