@@ -26,7 +26,7 @@ class Receipt extends Model
 
 	public function RowAddDateTime()
 	{
-		return Date('Y-m-d H:i:s.uP');
+		return Date("c", time());
 	}
 
 	public function RowAddUserNo()
@@ -36,7 +36,7 @@ class Receipt extends Model
 
 	public function RowEditDateTime()
 	{
-		return Date('Y-m-d H:i:s.uP');
+		return Date("c", time());
 	}
 
 	public function RowEditUserNo()
@@ -66,7 +66,7 @@ class Receipt extends Model
 
 	public function Time()
 	{
-		return Date('Y-m-d H:i:s.uP');
+		return Date("c", time());
 	}
 
 	public function DepotID()
